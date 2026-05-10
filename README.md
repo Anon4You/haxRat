@@ -38,8 +38,8 @@ A cloud based remote android managment suite, powered by NodeJS
 
 ### For TermuxVoid Users
 ```bash
-apt install hazrat -y
-hazrat
+apt install haxrat -y
+haxrat
 ```
 
 ### For Termux Users
