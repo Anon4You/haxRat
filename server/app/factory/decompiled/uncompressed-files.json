@@ -1,0 +1,18 @@
+{
+  "extensions": [
+    ".jpg",
+    ".mp3",
+    ".mp4",
+    ".png",
+    ".wav",
+    ".webp"
+  ],
+  "paths": [
+    "res/mipmap-hdpi-v4/ic_launcher.png",
+    "res/mipmap-mdpi-v4/ic_launcher.png",
+    "res/mipmap-xhdpi-v4/ic_launcher.png",
+    "res/mipmap-xxhdpi-v4/ic_launcher.png",
+    "res/mipmap-xxxhdpi-v4/ic_launcher.png",
+    "resources.arsc"
+  ]
+}

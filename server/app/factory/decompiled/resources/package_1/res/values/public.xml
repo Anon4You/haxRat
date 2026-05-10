@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<resources package="com.hax4us.haxrat" id="0x7f">
+  <public id="0x7f020000" type="mipmap" name="ic_launcher" />
+  <public id="0x7f030000" type="layout" name="activity_main" />
+  <public id="0x7f040000" type="xml" name="admin" />
+  <public id="0x7f050002" type="color" name="colorAccent" />
+  <public id="0x7f050000" type="color" name="colorPrimary" />
+  <public id="0x7f050001" type="color" name="colorPrimaryDark" />
+  <public id="0x7f060001" type="dimen" name="activity_vertical_margin" />
+  <public id="0x7f060000" type="dimen" name="activity_horizontal_margin" />
+  <public id="0x7f070002" type="string" name="device_description" />
+  <public id="0x7f070000" type="string" name="app_name" />
+  <public id="0x7f070001" type="string" name="device_admin_label" />
+  <public id="0x7f080002" type="style" name="TransParent" />
+  <public id="0x7f080000" type="style" name="AppTheme" />
+  <public id="0x7f080001" type="style" name="MyTheme" />
+  <public id="0x7f090001" type="id" name="progressBar" />
+  <public id="0x7f090000" type="id" name="activity_main" />
+</resources>

