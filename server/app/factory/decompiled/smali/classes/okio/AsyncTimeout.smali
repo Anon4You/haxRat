@@ -1,69 +1,17 @@
 .class public Lokio/AsyncTimeout;
 .super Lokio/Timeout;
-.source "AsyncTimeout.kt"
+.source "AsyncTimeout.java"
 
 
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Lokio/AsyncTimeout$Watchdog;,
-        Lokio/AsyncTimeout$Companion;
-    }
-.end annotation
-
-.annotation runtime Lkotlin/Metadata;
-    bv = {
-        0x1,
-        0x0,
-        0x3
-    }
-    d1 = {
-        "\u0000@\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0008\u0002\n\u0002\u0010\u000b\n\u0002\u0008\u0002\n\u0002\u0010\t\n\u0000\n\u0002\u0018\u0002\n\u0002\u0008\u0002\n\u0002\u0010\u0002\n\u0002\u0008\u0005\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\u0008\u0004\n\u0002\u0018\u0002\n\u0002\u0008\u0004\u0008\u0016\u0018\u0000 \u001b2\u00020\u0001:\u0002\u001b\u001cB\u0005\u00a2\u0006\u0002\u0010\u0002J\u0012\u0010\u0008\u001a\u00020\t2\u0008\u0010\n\u001a\u0004\u0018\u00010\tH\u0001J\u0006\u0010\u000b\u001a\u00020\u000cJ\u0006\u0010\r\u001a\u00020\u0004J\u0012\u0010\u000e\u001a\u00020\t2\u0008\u0010\n\u001a\u0004\u0018\u00010\tH\u0014J\u0010\u0010\u000f\u001a\u00020\u00072\u0006\u0010\u0010\u001a\u00020\u0007H\u0002J\u000e\u0010\u0011\u001a\u00020\u00122\u0006\u0010\u0011\u001a\u00020\u0012J\u000e\u0010\u0013\u001a\u00020\u00142\u0006\u0010\u0013\u001a\u00020\u0014J\u0008\u0010\u0015\u001a\u00020\u000cH\u0014J\"\u0010\u0016\u001a\u0002H\u0017\"\u0004\u0008\u0000\u0010\u00172\u000c\u0010\u0018\u001a\u0008\u0012\u0004\u0012\u0002H\u00170\u0019H\u0086\u0008\u00a2\u0006\u0002\u0010\u001aR\u000e\u0010\u0003\u001a\u00020\u0004X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u0010\u0010\u0005\u001a\u0004\u0018\u00010\u0000X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0006\u001a\u00020\u0007X\u0082\u000e\u00a2\u0006\u0002\n\u0000\u00a8\u0006\u001d"
-    }
-    d2 = {
-        "Lokio/AsyncTimeout;",
-        "Lokio/Timeout;",
-        "()V",
-        "inQueue",
-        "",
-        "next",
-        "timeoutAt",
-        "",
-        "access$newTimeoutException",
-        "Ljava/io/IOException;",
-        "cause",
-        "enter",
-        "",
-        "exit",
-        "newTimeoutException",
-        "remainingNanos",
-        "now",
-        "sink",
-        "Lokio/Sink;",
-        "source",
-        "Lokio/Source;",
-        "timedOut",
-        "withTimeout",
-        "T",
-        "block",
-        "Lkotlin/Function0;",
-        "(Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;",
-        "Companion",
-        "Watchdog",
-        "okio"
-    }
-    k = 0x1
-    mv = {
-        0x1,
-        0x1,
-        0x10
+        Lokio/AsyncTimeout$Watchdog;
     }
 .end annotation
 
 
 # static fields
-.field public static final Companion:Lokio/AsyncTimeout$Companion;
-
 .field private static final IDLE_TIMEOUT_MILLIS:J
 
 .field private static final IDLE_TIMEOUT_NANOS:J
@@ -83,24 +31,9 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 4
+    .locals 3
 
-    .prologue 
-    new-instance v0, Lokio/AsyncTimeout$Companion;
-
-    move-object v3, v0
-
-    move-object v0, v3
-
-    move-object v1, v3
-
-    const/4 v2, 0x0
-
-    invoke-direct {v1, v2}, Lokio/AsyncTimeout$Companion;-><init>(Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-
-    sput-object v0, Lokio/AsyncTimeout;->Companion:Lokio/AsyncTimeout$Companion;
-
-    .line 214
+    .line 49
     sget-object v0, Ljava/util/concurrent/TimeUnit;->SECONDS:Ljava/util/concurrent/TimeUnit;
 
     const-wide/16 v1, 0x3c
@@ -111,7 +44,7 @@
 
     sput-wide v0, Lokio/AsyncTimeout;->IDLE_TIMEOUT_MILLIS:J
 
-    .line 215
+    .line 50
     sget-object v0, Ljava/util/concurrent/TimeUnit;->MILLISECONDS:Ljava/util/concurrent/TimeUnit;
 
     sget-wide v1, Lokio/AsyncTimeout;->IDLE_TIMEOUT_MILLIS:J
@@ -126,508 +59,611 @@
 .end method
 
 .method public constructor <init>()V
-    .locals 2
+    .locals 0
 
-    .prologue 
-    .line 38
-    move-object v0, p0
-
-    move-object v1, v0
-
-    invoke-direct {v1}, Lokio/Timeout;-><init>()V
+    .line 40
+    invoke-direct {p0}, Lokio/Timeout;-><init>()V
 
     return-void
 .end method
 
-.method public static final synthetic access$getHead$cp()Lokio/AsyncTimeout;
+.method static synthetic access$000()Lokio/AsyncTimeout;
     .locals 1
 
-    .prologue 
-    .line 38
+    .line 40
     sget-object v0, Lokio/AsyncTimeout;->head:Lokio/AsyncTimeout;
 
     return-object v0
 .end method
 
-.method public static final synthetic access$getIDLE_TIMEOUT_MILLIS$cp()J
-    .locals 2
+.method static synthetic access$002(Lokio/AsyncTimeout;)Lokio/AsyncTimeout;
+    .locals 0
+    .param p0, "x0"    # Lokio/AsyncTimeout;
 
-    .prologue 
-    .line 38
-    sget-wide v0, Lokio/AsyncTimeout;->IDLE_TIMEOUT_MILLIS:J
+    .line 40
+    sput-object p0, Lokio/AsyncTimeout;->head:Lokio/AsyncTimeout;
 
-    return-wide v0
+    return-object p0
 .end method
 
-.method public static final synthetic access$getIDLE_TIMEOUT_NANOS$cp()J
-    .locals 2
+.method static awaitTimeout()Lokio/AsyncTimeout;
+    .locals 9
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/lang/InterruptedException;
+        }
+    .end annotation
 
-    .prologue 
-    .line 38
-    sget-wide v0, Lokio/AsyncTimeout;->IDLE_TIMEOUT_NANOS:J
+    .line 341
+    sget-object v0, Lokio/AsyncTimeout;->head:Lokio/AsyncTimeout;
 
-    return-wide v0
-.end method
+    iget-object v0, v0, Lokio/AsyncTimeout;->next:Lokio/AsyncTimeout;
 
-.method public static final synthetic access$getNext$p(Lokio/AsyncTimeout;)Lokio/AsyncTimeout;
-    .locals 2
+    .line 344
+    .local v0, "node":Lokio/AsyncTimeout;
+    const/4 v1, 0x0
 
-    .prologue 
-    .line 38
-    move-object v0, p0
+    if-nez v0, :cond_1
 
-    move-object v1, v0
+    .line 345
+    invoke-static {}, Ljava/lang/System;->nanoTime()J
 
-    iget-object v1, v1, Lokio/AsyncTimeout;->next:Lokio/AsyncTimeout;
+    move-result-wide v2
 
-    move-object v0, v1
+    .line 346
+    .local v2, "startNanos":J
+    const-class v4, Lokio/AsyncTimeout;
 
+    sget-wide v5, Lokio/AsyncTimeout;->IDLE_TIMEOUT_MILLIS:J
+
+    invoke-virtual {v4, v5, v6}, Ljava/lang/Object;->wait(J)V
+
+    .line 347
+    sget-object v4, Lokio/AsyncTimeout;->head:Lokio/AsyncTimeout;
+
+    iget-object v4, v4, Lokio/AsyncTimeout;->next:Lokio/AsyncTimeout;
+
+    if-nez v4, :cond_0
+
+    invoke-static {}, Ljava/lang/System;->nanoTime()J
+
+    move-result-wide v4
+
+    sub-long/2addr v4, v2
+
+    sget-wide v6, Lokio/AsyncTimeout;->IDLE_TIMEOUT_NANOS:J
+
+    cmp-long v8, v4, v6
+
+    if-ltz v8, :cond_0
+
+    sget-object v1, Lokio/AsyncTimeout;->head:Lokio/AsyncTimeout;
+
+    :cond_0
+    return-object v1
+
+    .line 352
+    .end local v2
+    :cond_1
+    invoke-static {}, Ljava/lang/System;->nanoTime()J
+
+    move-result-wide v2
+
+    invoke-direct {v0, v2, v3}, Lokio/AsyncTimeout;->remainingNanos(J)J
+
+    move-result-wide v2
+
+    .line 355
+    .local v2, "waitNanos":J
+    const-wide/16 v4, 0x0
+
+    cmp-long v6, v2, v4
+
+    if-lez v6, :cond_2
+
+    .line 358
+    const-wide/32 v4, 0xf4240
+
+    div-long v6, v2, v4
+
+    .line 359
+    .local v6, "waitMillis":J
+    mul-long v4, v4, v6
+
+    sub-long/2addr v2, v4
+
+    .line 360
+    const-class v4, Lokio/AsyncTimeout;
+
+    long-to-int v5, v2
+
+    invoke-virtual {v4, v6, v7, v5}, Ljava/lang/Object;->wait(JI)V
+
+    .line 361
+    return-object v1
+
+    .line 365
+    .end local v6
+    :cond_2
+    sget-object v4, Lokio/AsyncTimeout;->head:Lokio/AsyncTimeout;
+
+    iget-object v5, v0, Lokio/AsyncTimeout;->next:Lokio/AsyncTimeout;
+
+    iput-object v5, v4, Lokio/AsyncTimeout;->next:Lokio/AsyncTimeout;
+
+    .line 366
+    iput-object v1, v0, Lokio/AsyncTimeout;->next:Lokio/AsyncTimeout;
+
+    .line 367
     return-object v0
 .end method
 
-.method public static final synthetic access$getTimeoutAt$p(Lokio/AsyncTimeout;)J
+.method private static declared-synchronized cancelScheduledTimeout(Lokio/AsyncTimeout;)Z
     .locals 3
+    .param p0, "node"    # Lokio/AsyncTimeout;
 
-    .prologue 
-    .line 38
-    move-object v0, p0
+    const-class v0, Lokio/AsyncTimeout;
 
-    move-object v1, v0
+    monitor-enter v0
 
-    iget-wide v1, v1, Lokio/AsyncTimeout;->timeoutAt:J
+    .line 127
+    :try_start_0
+    sget-object v1, Lokio/AsyncTimeout;->head:Lokio/AsyncTimeout;
 
-    move-wide v0, v1
+    .local v1, "prev":Lokio/AsyncTimeout;
+    :goto_0
+    if-eqz v1, :cond_1
 
-    return-wide v0
+    .line 128
+    iget-object v2, v1, Lokio/AsyncTimeout;->next:Lokio/AsyncTimeout;
+
+    if-ne v2, p0, :cond_0
+
+    .line 129
+    iget-object v2, p0, Lokio/AsyncTimeout;->next:Lokio/AsyncTimeout;
+
+    iput-object v2, v1, Lokio/AsyncTimeout;->next:Lokio/AsyncTimeout;
+
+    .line 130
+    const/4 v2, 0x0
+
+    iput-object v2, p0, Lokio/AsyncTimeout;->next:Lokio/AsyncTimeout;
+
+    .line 131
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    const/4 v2, 0x0
+
+    monitor-exit v0
+
+    return v2
+
+    .line 127
+    :cond_0
+    :try_start_1
+    iget-object v2, v1, Lokio/AsyncTimeout;->next:Lokio/AsyncTimeout;
+
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    move-object v1, v2
+
+    goto :goto_0
+
+    .line 136
+    .end local v1
+    :cond_1
+    const/4 v1, 0x1
+
+    monitor-exit v0
+
+    return v1
+
+    .line 126
+    .end local p0
+    :catchall_0
+    move-exception p0
+
+    monitor-exit v0
+
+    goto :goto_2
+
+    :goto_1
+    throw p0
+
+    :goto_2
+    goto :goto_1
 .end method
 
-.method public static final synthetic access$remainingNanos(Lokio/AsyncTimeout;J)J
-    .locals 6
-
-    .prologue 
-    .line 38
-    move-object v0, p0
-
-    move-wide v1, p1
-
-    move-object v3, v0
-
-    move-wide v4, v1
-
-    invoke-direct {v3, v4, v5}, Lokio/AsyncTimeout;->remainingNanos(J)J
-
-    move-result-wide v3
-
-    move-wide v0, v3
-
-    return-wide v0
-.end method
-
-.method public static final synthetic access$setHead$cp(Lokio/AsyncTimeout;)V
+.method private remainingNanos(J)J
     .locals 2
+    .param p1, "now"    # J
 
-    .prologue 
-    .line 38
-    move-object v0, p0
+    .line 144
+    iget-wide v0, p0, Lokio/AsyncTimeout;->timeoutAt:J
 
-    move-object v1, v0
+    sub-long/2addr v0, p1
+
+    return-wide v0
+.end method
+
+.method private static declared-synchronized scheduleTimeout(Lokio/AsyncTimeout;JZ)V
+    .locals 9
+    .param p0, "node"    # Lokio/AsyncTimeout;
+    .param p1, "timeoutNanos"    # J
+    .param p3, "hasDeadline"    # Z
+
+    const-class v0, Lokio/AsyncTimeout;
+
+    monitor-enter v0
+
+    .line 85
+    :try_start_0
+    sget-object v1, Lokio/AsyncTimeout;->head:Lokio/AsyncTimeout;
+
+    if-nez v1, :cond_0
+
+    .line 86
+    new-instance v1, Lokio/AsyncTimeout;
+
+    invoke-direct {v1}, Lokio/AsyncTimeout;-><init>()V
 
     sput-object v1, Lokio/AsyncTimeout;->head:Lokio/AsyncTimeout;
 
+    .line 87
+    new-instance v1, Lokio/AsyncTimeout$Watchdog;
+
+    invoke-direct {v1}, Lokio/AsyncTimeout$Watchdog;-><init>()V
+
+    invoke-virtual {v1}, Lokio/AsyncTimeout$Watchdog;->start()V
+
+    .line 90
+    :cond_0
+    invoke-static {}, Ljava/lang/System;->nanoTime()J
+
+    move-result-wide v1
+
+    .line 91
+    .local v1, "now":J
+    const-wide/16 v3, 0x0
+
+    cmp-long v5, p1, v3
+
+    if-eqz v5, :cond_1
+
+    if-eqz p3, :cond_1
+
+    .line 94
+    invoke-virtual {p0}, Lokio/AsyncTimeout;->deadlineNanoTime()J
+
+    move-result-wide v3
+
+    sub-long/2addr v3, v1
+
+    invoke-static {p1, p2, v3, v4}, Ljava/lang/Math;->min(JJ)J
+
+    move-result-wide v3
+
+    add-long/2addr v3, v1
+
+    iput-wide v3, p0, Lokio/AsyncTimeout;->timeoutAt:J
+
+    goto :goto_0
+
+    .line 95
+    :cond_1
+    cmp-long v5, p1, v3
+
+    if-eqz v5, :cond_2
+
+    .line 96
+    add-long v3, v1, p1
+
+    iput-wide v3, p0, Lokio/AsyncTimeout;->timeoutAt:J
+
+    goto :goto_0
+
+    .line 97
+    :cond_2
+    if-eqz p3, :cond_6
+
+    .line 98
+    invoke-virtual {p0}, Lokio/AsyncTimeout;->deadlineNanoTime()J
+
+    move-result-wide v3
+
+    iput-wide v3, p0, Lokio/AsyncTimeout;->timeoutAt:J
+
+    .line 104
+    :goto_0
+    invoke-direct {p0, v1, v2}, Lokio/AsyncTimeout;->remainingNanos(J)J
+
+    move-result-wide v3
+
+    .line 105
+    .local v3, "remainingNanos":J
+    sget-object v5, Lokio/AsyncTimeout;->head:Lokio/AsyncTimeout;
+
+    .line 106
+    .local v5, "prev":Lokio/AsyncTimeout;
+    :goto_1
+    iget-object v6, v5, Lokio/AsyncTimeout;->next:Lokio/AsyncTimeout;
+
+    if-eqz v6, :cond_4
+
+    iget-object v6, v5, Lokio/AsyncTimeout;->next:Lokio/AsyncTimeout;
+
+    invoke-direct {v6, v1, v2}, Lokio/AsyncTimeout;->remainingNanos(J)J
+
+    move-result-wide v6
+
+    cmp-long v8, v3, v6
+
+    if-gez v8, :cond_3
+
+    goto :goto_2
+
+    .line 105
+    :cond_3
+    iget-object v6, v5, Lokio/AsyncTimeout;->next:Lokio/AsyncTimeout;
+
+    move-object v5, v6
+
+    goto :goto_1
+
+    .line 107
+    :cond_4
+    :goto_2
+    iget-object v6, v5, Lokio/AsyncTimeout;->next:Lokio/AsyncTimeout;
+
+    iput-object v6, p0, Lokio/AsyncTimeout;->next:Lokio/AsyncTimeout;
+
+    .line 108
+    iput-object p0, v5, Lokio/AsyncTimeout;->next:Lokio/AsyncTimeout;
+
+    .line 109
+    sget-object v6, Lokio/AsyncTimeout;->head:Lokio/AsyncTimeout;
+
+    if-ne v5, v6, :cond_5
+
+    .line 110
+    const-class v6, Lokio/AsyncTimeout;
+
+    invoke-virtual {v6}, Ljava/lang/Object;->notify()V
+
+    .line 115
+    .end local v5
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    :cond_5
+    monitor-exit v0
+
     return-void
-.end method
 
-.method public static final synthetic access$setNext$p(Lokio/AsyncTimeout;Lokio/AsyncTimeout;)V
-    .locals 4
+    .line 100
+    .end local v3
+    :cond_6
+    :try_start_1
+    new-instance v3, Ljava/lang/AssertionError;
 
-    .prologue 
-    .line 38
-    move-object v0, p0
+    invoke-direct {v3}, Ljava/lang/AssertionError;-><init>()V
 
-    move-object v1, p1
+    throw v3
 
-    move-object v2, v0
+    .line 84
+    .end local v1
+    .end local p0
+    .end local p1
+    .end local p3
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    move-object v3, v1
+    :catchall_0
+    move-exception p0
 
-    iput-object v3, v2, Lokio/AsyncTimeout;->next:Lokio/AsyncTimeout;
+    monitor-exit v0
 
-    return-void
-.end method
+    goto :goto_4
 
-.method public static final synthetic access$setTimeoutAt$p(Lokio/AsyncTimeout;J)V
-    .locals 6
+    :goto_3
+    throw p0
 
-    .prologue 
-    .line 38
-    move-object v0, p0
-
-    move-wide v1, p1
-
-    move-object v3, v0
-
-    move-wide v4, v1
-
-    iput-wide v4, v3, Lokio/AsyncTimeout;->timeoutAt:J
-
-    return-void
-.end method
-
-.method private final remainingNanos(J)J
-    .locals 7
-
-    .prologue 
-    .line 70
-    move-object v0, p0
-
-    move-wide v1, p1
-
-    move-object v3, v0
-
-    iget-wide v3, v3, Lokio/AsyncTimeout;->timeoutAt:J
-
-    move-wide v5, v1
-
-    sub-long/2addr v3, v5
-
-    move-wide v0, v3
-
-    return-wide v0
+    :goto_4
+    goto :goto_3
 .end method
 
 
 # virtual methods
-.method public final access$newTimeoutException(Ljava/io/IOException;)Ljava/io/IOException;
-    .locals 4
-    .param p1    # Ljava/io/IOException;
-        .annotation build Lorg/jetbrains/annotations/Nullable;
-        .end annotation
-    .end param
-    .annotation build Lkotlin/PublishedApi;
+.method public final enter()V
+    .locals 6
+
+    .line 72
+    iget-boolean v0, p0, Lokio/AsyncTimeout;->inQueue:Z
+
+    if-nez v0, :cond_1
+
+    .line 73
+    invoke-virtual {p0}, Lokio/AsyncTimeout;->timeoutNanos()J
+
+    move-result-wide v0
+
+    .line 74
+    .local v0, "timeoutNanos":J
+    invoke-virtual {p0}, Lokio/AsyncTimeout;->hasDeadline()Z
+
+    move-result v2
+
+    .line 75
+    .local v2, "hasDeadline":Z
+    const-wide/16 v3, 0x0
+
+    cmp-long v5, v0, v3
+
+    if-nez v5, :cond_0
+
+    if-nez v2, :cond_0
+
+    .line 76
+    return-void
+
+    .line 78
+    :cond_0
+    const/4 v3, 0x1
+
+    iput-boolean v3, p0, Lokio/AsyncTimeout;->inQueue:Z
+
+    .line 79
+    invoke-static {p0, v0, v1, v2}, Lokio/AsyncTimeout;->scheduleTimeout(Lokio/AsyncTimeout;JZ)V
+
+    .line 80
+    return-void
+
+    .line 72
+    .end local v0
+    .end local v2
+    :cond_1
+    new-instance v0, Ljava/lang/IllegalStateException;
+
+    const-string v1, "Unbalanced enter/exit"
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+.end method
+
+.method final exit(Ljava/io/IOException;)Ljava/io/IOException;
+    .locals 1
+    .param p1, "cause"    # Ljava/io/IOException;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;
+        }
     .end annotation
-    .annotation build Lorg/jetbrains/annotations/NotNull;
-    .end annotation
 
-    .prologue 
-    .line 162
-    move-object v0, p0
+    .line 283
+    invoke-virtual {p0}, Lokio/AsyncTimeout;->exit()Z
 
-    move-object v1, p1
+    move-result v0
 
-    move-object v2, v0
+    if-nez v0, :cond_0
 
-    move-object v3, v1
+    return-object p1
 
-    invoke-virtual {v2, v3}, Lokio/AsyncTimeout;->newTimeoutException(Ljava/io/IOException;)Ljava/io/IOException;
+    .line 284
+    :cond_0
+    invoke-virtual {p0, p1}, Lokio/AsyncTimeout;->newTimeoutException(Ljava/io/IOException;)Ljava/io/IOException;
 
-    move-result-object v2
-
-    move-object v0, v2
+    move-result-object v0
 
     return-object v0
 .end method
 
-.method public final enter()V
-    .locals 11
+.method final exit(Z)V
+    .locals 2
+    .param p1, "throwOnTimeout"    # Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;
+        }
+    .end annotation
 
-    .prologue 
-    .line 49
-    move-object v0, p0
+    .line 273
+    invoke-virtual {p0}, Lokio/AsyncTimeout;->exit()Z
 
-    move-object v5, v0
+    move-result v0
 
-    iget-boolean v5, v5, Lokio/AsyncTimeout;->inQueue:Z
+    .line 274
+    .local v0, "timedOut":Z
+    if-eqz v0, :cond_1
 
-    if-nez v5, :cond_0
-
-    const/4 v5, 0x1
-
-    :goto_0
-    move v1, v5
-
-    const/4 v5, 0x0
-
-    move v2, v5
-
-    const/4 v5, 0x0
-
-    move v3, v5
-
-    move v5, v1
-
-    if-nez v5, :cond_1
-
-    const/4 v5, 0x0
-
-    move v4, v5
-
-    const-string v5, "Unbalanced enter/exit"
-
-    move-object v3, v5
-
-    new-instance v5, Ljava/lang/IllegalStateException;
-
-    move-object v10, v5
-
-    move-object v5, v10
-
-    move-object v6, v10
-
-    move-object v7, v3
-
-    invoke-virtual {v7}, Ljava/lang/Object;->toString()Ljava/lang/String;
-
-    move-result-object v7
-
-    invoke-direct {v6, v7}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
-
-    check-cast v5, Ljava/lang/Throwable;
-
-    throw v5
-
-    :cond_0
-    const/4 v5, 0x0
+    if-nez p1, :cond_0
 
     goto :goto_0
 
-    .line 50
+    :cond_0
+    const/4 v1, 0x0
+
+    invoke-virtual {p0, v1}, Lokio/AsyncTimeout;->newTimeoutException(Ljava/io/IOException;)Ljava/io/IOException;
+
+    move-result-object v1
+
+    throw v1
+
+    .line 275
     :cond_1
-    move-object v5, v0
-
-    invoke-virtual {v5}, Lokio/AsyncTimeout;->timeoutNanos()J
-
-    move-result-wide v5
-
-    move-wide v1, v5
-
-    .line 51
-    move-object v5, v0
-
-    invoke-virtual {v5}, Lokio/AsyncTimeout;->hasDeadline()Z
-
-    move-result v5
-
-    move v3, v5
-
-    .line 52
-    move-wide v5, v1
-
-    const-wide/16 v7, 0x0
-
-    cmp-long v5, v5, v7
-
-    if-nez v5, :cond_2
-
-    move v5, v3
-
-    if-nez v5, :cond_2
-
-    .line 57
-    :goto_1
+    :goto_0
     return-void
-
-    .line 55
-    :cond_2
-    move-object v5, v0
-
-    const/4 v6, 0x1
-
-    iput-boolean v6, v5, Lokio/AsyncTimeout;->inQueue:Z
-
-    .line 56
-    sget-object v5, Lokio/AsyncTimeout;->Companion:Lokio/AsyncTimeout$Companion;
-
-    move-object v6, v0
-
-    move-wide v7, v1
-
-    move v9, v3
-
-    invoke-static {v5, v6, v7, v8, v9}, Lokio/AsyncTimeout$Companion;->access$scheduleTimeout(Lokio/AsyncTimeout$Companion;Lokio/AsyncTimeout;JZ)V
-
-    .line 57
-    goto :goto_1
 .end method
 
 .method public final exit()Z
-    .locals 3
+    .locals 2
 
-    .prologue 
-    .line 61
-    move-object v0, p0
-
-    move-object v1, v0
-
-    iget-boolean v1, v1, Lokio/AsyncTimeout;->inQueue:Z
-
-    if-nez v1, :cond_0
+    .line 119
+    iget-boolean v0, p0, Lokio/AsyncTimeout;->inQueue:Z
 
     const/4 v1, 0x0
 
-    move v0, v1
+    if-nez v0, :cond_0
 
-    .line 63
-    :goto_0
-    return v0
+    return v1
 
-    .line 62
+    .line 120
     :cond_0
-    move-object v1, v0
+    iput-boolean v1, p0, Lokio/AsyncTimeout;->inQueue:Z
 
-    const/4 v2, 0x0
+    .line 121
+    invoke-static {p0}, Lokio/AsyncTimeout;->cancelScheduledTimeout(Lokio/AsyncTimeout;)Z
 
-    iput-boolean v2, v1, Lokio/AsyncTimeout;->inQueue:Z
+    move-result v0
 
-    .line 63
-    sget-object v1, Lokio/AsyncTimeout;->Companion:Lokio/AsyncTimeout$Companion;
-
-    move-object v2, v0
-
-    invoke-static {v1, v2}, Lokio/AsyncTimeout$Companion;->access$cancelScheduledTimeout(Lokio/AsyncTimeout$Companion;Lokio/AsyncTimeout;)Z
-
-    move-result v1
-
-    move v0, v1
-
-    goto :goto_0
+    return v0
 .end method
 
 .method protected newTimeoutException(Ljava/io/IOException;)Ljava/io/IOException;
-    .locals 7
-    .param p1    # Ljava/io/IOException;
-        .annotation build Lorg/jetbrains/annotations/Nullable;
-        .end annotation
-    .end param
-    .annotation build Lorg/jetbrains/annotations/NotNull;
-    .end annotation
+    .locals 2
+    .param p1, "cause"    # Ljava/io/IOException;
 
-    .prologue 
-    .line 170
-    move-object v0, p0
+    .line 293
+    new-instance v0, Ljava/io/InterruptedIOException;
 
-    move-object v1, p1
+    const-string v1, "timeout"
 
-    new-instance v3, Ljava/io/InterruptedIOException;
+    invoke-direct {v0, v1}, Ljava/io/InterruptedIOException;-><init>(Ljava/lang/String;)V
 
-    move-object v6, v3
+    .line 294
+    .local v0, "e":Ljava/io/InterruptedIOException;
+    if-eqz p1, :cond_0
 
-    move-object v3, v6
+    .line 295
+    invoke-virtual {v0, p1}, Ljava/io/InterruptedIOException;->initCause(Ljava/lang/Throwable;)Ljava/lang/Throwable;
 
-    move-object v4, v6
-
-    const-string v5, "timeout"
-
-    invoke-direct {v4, v5}, Ljava/io/InterruptedIOException;-><init>(Ljava/lang/String;)V
-
-    move-object v2, v3
-
-    .line 171
-    move-object v3, v1
-
-    if-eqz v3, :cond_0
-
-    .line 172
-    move-object v3, v2
-
-    move-object v4, v1
-
-    check-cast v4, Ljava/lang/Throwable;
-
-    invoke-virtual {v3, v4}, Ljava/io/InterruptedIOException;->initCause(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-
-    move-result-object v3
-
-    .line 174
+    .line 297
     :cond_0
-    move-object v3, v2
-
-    check-cast v3, Ljava/io/IOException;
-
-    move-object v0, v3
-
     return-object v0
 .end method
 
 .method public final sink(Lokio/Sink;)Lokio/Sink;
-    .locals 7
-    .param p1    # Lokio/Sink;
-        .annotation build Lorg/jetbrains/annotations/NotNull;
-        .end annotation
-    .end param
-    .annotation build Lorg/jetbrains/annotations/NotNull;
-    .end annotation
+    .locals 1
+    .param p1, "sink"    # Lokio/Sink;
 
-    .prologue 
-    move-object v0, p0
+    .line 159
+    new-instance v0, Lokio/AsyncTimeout$1;
 
-    move-object v1, p1
-
-    move-object v2, v1
-
-    const-string v3, "sink"
-
-    invoke-static {v2, v3}, Lkotlin/jvm/internal/Intrinsics;->checkParameterIsNotNull(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 83
-    new-instance v2, Lokio/AsyncTimeout$sink$1;
-
-    move-object v6, v2
-
-    move-object v2, v6
-
-    move-object v3, v6
-
-    move-object v4, v0
-
-    move-object v5, v1
-
-    invoke-direct {v3, v4, v5}, Lokio/AsyncTimeout$sink$1;-><init>(Lokio/AsyncTimeout;Lokio/Sink;)V
-
-    check-cast v2, Lokio/Sink;
-
-    move-object v0, v2
+    invoke-direct {v0, p0, p1}, Lokio/AsyncTimeout$1;-><init>(Lokio/AsyncTimeout;Lokio/Sink;)V
 
     return-object v0
 .end method
 
 .method public final source(Lokio/Source;)Lokio/Source;
-    .locals 7
-    .param p1    # Lokio/Source;
-        .annotation build Lorg/jetbrains/annotations/NotNull;
-        .end annotation
-    .end param
-    .annotation build Lorg/jetbrains/annotations/NotNull;
-    .end annotation
+    .locals 1
+    .param p1, "source"    # Lokio/Source;
 
-    .prologue 
-    move-object v0, p0
+    .line 231
+    new-instance v0, Lokio/AsyncTimeout$2;
 
-    move-object v1, p1
-
-    move-object v2, v1
-
-    const-string v3, "source"
-
-    invoke-static {v2, v3}, Lkotlin/jvm/internal/Intrinsics;->checkParameterIsNotNull(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 127
-    new-instance v2, Lokio/AsyncTimeout$source$1;
-
-    move-object v6, v2
-
-    move-object v2, v6
-
-    move-object v3, v6
-
-    move-object v4, v0
-
-    move-object v5, v1
-
-    invoke-direct {v3, v4, v5}, Lokio/AsyncTimeout$source$1;-><init>(Lokio/AsyncTimeout;Lokio/Source;)V
-
-    check-cast v2, Lokio/Source;
-
-    move-object v0, v2
+    invoke-direct {v0, p0, p1}, Lokio/AsyncTimeout$2;-><init>(Lokio/AsyncTimeout;Lokio/Source;)V
 
     return-object v0
 .end method
@@ -635,211 +671,6 @@
 .method protected timedOut()V
     .locals 0
 
-    .prologue 
-    .line 76
-    return-void
-.end method
-
-.method public final withTimeout(Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;
-    .locals 9
-    .param p1    # Lkotlin/jvm/functions/Function0<? extends T;>;
-        .annotation build Lorg/jetbrains/annotations/NotNull;
-        .end annotation
-    .end param
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "<T:",
-            "Ljava/lang/Object;",
-            ">(",
-            "Lkotlin/jvm/functions/Function0",
-            "<+TT;>;)TT;"
-        }
-    .end annotation
-
-    .prologue 
-    move-object v0, p0
-
-    move-object v1, p1
-
-    const/4 v7, 0x0
-
-    move v2, v7
-
-    move-object v7, v1
-
-    const-string v8, "block"
-
-    invoke-static {v7, v8}, Lkotlin/jvm/internal/Intrinsics;->checkParameterIsNotNull(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 147
-    const/4 v7, 0x0
-
-    move v3, v7
-
-    .line 148
-    move-object v7, v0
-
-    invoke-virtual {v7}, Lokio/AsyncTimeout;->enter()V
-
-    .line 149
-    nop
-
-    .line 150
-    move-object v7, v1
-
-    :try_start_0
-    invoke-interface {v7}, Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;
-
-    :try_end_0
-    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    move-result-object v7
-
-    move-object v4, v7
-
-    .line 151
-    const/4 v7, 0x1
-
-    move v3, v7
-
     .line 152
-    move-object v7, v4
-
-    move-object v5, v7
-
-    const/4 v7, 0x1
-
-    invoke-static {v7}, Lkotlin/jvm/internal/InlineMarker;->finallyStart(I)V
-
-    .line 156
-    move-object v7, v0
-
-    invoke-virtual {v7}, Lokio/AsyncTimeout;->exit()Z
-
-    move-result v7
-
-    move v6, v7
-
-    .line 157
-    move v7, v6
-
-    if-eqz v7, :cond_0
-
-    move-object v7, v0
-
-    const/4 v8, 0x0
-
-    invoke-virtual {v7, v8}, Lokio/AsyncTimeout;->access$newTimeoutException(Ljava/io/IOException;)Ljava/io/IOException;
-
-    move-result-object v7
-
-    check-cast v7, Ljava/lang/Throwable;
-
-    throw v7
-
-    :cond_0
-    const/4 v7, 0x1
-
-    invoke-static {v7}, Lkotlin/jvm/internal/InlineMarker;->finallyEnd(I)V
-
-    move-object v7, v5
-
-    move-object v0, v7
-
-    return-object v0
-
-    .line 153
-    :catch_0
-    move-exception v7
-
-    move-object v4, v7
-
-    .line 154
-    move-object v7, v0
-
-    :try_start_1
-    invoke-virtual {v7}, Lokio/AsyncTimeout;->exit()Z
-
-    move-result v7
-
-    if-nez v7, :cond_1
-
-    move-object v7, v4
-
-    check-cast v7, Ljava/lang/Throwable;
-
-    :goto_0
-    throw v7
-
-    .line 158
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    :catchall_0
-    move-exception v7
-
-    move-object v4, v7
-
-    const/4 v7, 0x1
-
-    invoke-static {v7}, Lkotlin/jvm/internal/InlineMarker;->finallyStart(I)V
-
-    .line 156
-    move-object v7, v0
-
-    invoke-virtual {v7}, Lokio/AsyncTimeout;->exit()Z
-
-    move-result v7
-
-    move v5, v7
-
-    .line 157
-    move v7, v5
-
-    if-eqz v7, :cond_2
-
-    move v7, v3
-
-    if-eqz v7, :cond_2
-
-    move-object v7, v0
-
-    const/4 v8, 0x0
-
-    invoke-virtual {v7, v8}, Lokio/AsyncTimeout;->access$newTimeoutException(Ljava/io/IOException;)Ljava/io/IOException;
-
-    move-result-object v7
-
-    check-cast v7, Ljava/lang/Throwable;
-
-    throw v7
-
-    .line 154
-    :cond_1
-    move-object v7, v0
-
-    move-object v8, v4
-
-    :try_start_2
-    invoke-virtual {v7, v8}, Lokio/AsyncTimeout;->access$newTimeoutException(Ljava/io/IOException;)Ljava/io/IOException;
-
-    move-result-object v7
-
-    check-cast v7, Ljava/lang/Throwable;
-
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
-
-    goto :goto_0
-
-    .line 157
-    :cond_2
-    const/4 v7, 0x1
-
-    invoke-static {v7}, Lkotlin/jvm/internal/InlineMarker;->finallyEnd(I)V
-
-    move-object v7, v4
-
-    throw v7
+    return-void
 .end method

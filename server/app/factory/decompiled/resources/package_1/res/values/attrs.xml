@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<resources>
+  <attr name="fontProviderAuthority" formats="string" />
+  <attr name="fontProviderPackage" formats="string" />
+  <attr name="fontProviderQuery" formats="string" />
+  <attr name="fontProviderCerts" formats="reference" />
+  <attr name="fontProviderFetchStrategy">
+    <enum name="async" value="1" />
+    <enum name="blocking" value="0" />
+  </attr>
+  <attr name="fontProviderFetchTimeout" formats="integer">
+    <enum name="forever" value="-1" />
+  </attr>
+  <attr name="fontStyle">
+    <enum name="italic" value="1" />
+    <enum name="normal" value="0" />
+  </attr>
+  <attr name="font" formats="reference" />
+  <attr name="fontWeight" formats="integer" />
+</resources>

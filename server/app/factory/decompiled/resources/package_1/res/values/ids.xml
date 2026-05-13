@@ -1,5 +1,31 @@
 <?xml version='1.0' encoding='utf-8' ?>
 <resources>
+  <id name="line1" />
+  <id name="line3" />
+  <id name="tag_transition_group" />
+  <id name="text" />
+  <id name="text2" />
+  <id name="title" />
+  <id name="async" />
+  <id name="blocking" />
+  <id name="forever" />
+  <id name="italic" />
+  <id name="normal" />
   <id name="activity_main" />
   <id name="progressBar" />
+  <id name="action_container" />
+  <id name="action_image" />
+  <id name="action_text" />
+  <id name="notification_main_column_container" />
+  <id name="icon" />
+  <id name="notification_main_column" />
+  <id name="right_side" />
+  <id name="info" />
+  <id name="right_icon" />
+  <id name="notification_background" />
+  <id name="time" />
+  <id name="chronometer" />
+  <id name="action_divider" />
+  <id name="actions" />
+  <id name="icon_group" />
 </resources>

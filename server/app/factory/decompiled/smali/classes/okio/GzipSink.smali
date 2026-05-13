@@ -1,59 +1,9 @@
 .class public final Lokio/GzipSink;
 .super Ljava/lang/Object;
-.source "GzipSink.kt"
+.source "GzipSink.java"
 
 # interfaces
 .implements Lokio/Sink;
-
-
-# annotations
-.annotation runtime Lkotlin/Metadata;
-    bv = {
-        0x1,
-        0x0,
-        0x3
-    }
-    d1 = {
-        "\u0000H\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0008\u0003\n\u0002\u0010\u000b\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\u0008\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0002\u0008\u0003\n\u0002\u0018\u0002\n\u0002\u0008\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\t\n\u0002\u0008\u0004\u0018\u00002\u00020\u0001B\r\u0012\u0006\u0010\u0002\u001a\u00020\u0001\u00a2\u0006\u0002\u0010\u0003J\u0008\u0010\u000e\u001a\u00020\u000fH\u0016J\r\u0010\u0008\u001a\u00020\tH\u0007\u00a2\u0006\u0002\u0008\u0010J\u0008\u0010\u0011\u001a\u00020\u000fH\u0016J\u0008\u0010\u0012\u001a\u00020\u0013H\u0016J\u0018\u0010\u0014\u001a\u00020\u000f2\u0006\u0010\u0015\u001a\u00020\u00162\u0006\u0010\u0017\u001a\u00020\u0018H\u0002J\u0018\u0010\u0019\u001a\u00020\u000f2\u0006\u0010\u001a\u001a\u00020\u00162\u0006\u0010\u0017\u001a\u00020\u0018H\u0016J\u0008\u0010\u001b\u001a\u00020\u000fH\u0002R\u000e\u0010\u0004\u001a\u00020\u0005X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0006\u001a\u00020\u0007X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0013\u0010\u0008\u001a\u00020\t8G\u00a2\u0006\u0008\n\u0000\u001a\u0004\u0008\u0008\u0010\nR\u000e\u0010\u000b\u001a\u00020\u000cX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0002\u001a\u00020\rX\u0082\u0004\u00a2\u0006\u0002\n\u0000\u00a8\u0006\u001c"
-    }
-    d2 = {
-        "Lokio/GzipSink;",
-        "Lokio/Sink;",
-        "sink",
-        "(Lokio/Sink;)V",
-        "closed",
-        "",
-        "crc",
-        "Ljava/util/zip/CRC32;",
-        "deflater",
-        "Ljava/util/zip/Deflater;",
-        "()Ljava/util/zip/Deflater;",
-        "deflaterSink",
-        "Lokio/DeflaterSink;",
-        "Lokio/RealBufferedSink;",
-        "close",
-        "",
-        "-deprecated_deflater",
-        "flush",
-        "timeout",
-        "Lokio/Timeout;",
-        "updateCrc",
-        "buffer",
-        "Lokio/Buffer;",
-        "byteCount",
-        "",
-        "write",
-        "source",
-        "writeFooter",
-        "okio"
-    }
-    k = 0x1
-    mv = {
-        0x1,
-        0x1,
-        0x10
-    }
-.end annotation
 
 
 # instance fields
@@ -62,793 +12,417 @@
 .field private final crc:Ljava/util/zip/CRC32;
 
 .field private final deflater:Ljava/util/zip/Deflater;
-    .annotation build Lorg/jetbrains/annotations/NotNull;
-    .end annotation
-.end field
 
 .field private final deflaterSink:Lokio/DeflaterSink;
 
-.field private final sink:Lokio/RealBufferedSink;
+.field private final sink:Lokio/BufferedSink;
 
 
 # direct methods
 .method public constructor <init>(Lokio/Sink;)V
-    .locals 13
-    .param p1    # Lokio/Sink;
-        .annotation build Lorg/jetbrains/annotations/NotNull;
-        .end annotation
-    .end param
+    .locals 3
+    .param p1, "sink"    # Lokio/Sink;
 
-    .prologue 
-    move-object v0, p0
+    .line 56
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    move-object v1, p1
+    .line 54
+    new-instance v0, Ljava/util/zip/CRC32;
 
-    move-object v7, v1
+    invoke-direct {v0}, Ljava/util/zip/CRC32;-><init>()V
 
-    const-string v8, "sink"
+    iput-object v0, p0, Lokio/GzipSink;->crc:Ljava/util/zip/CRC32;
 
-    invoke-static {v7, v8}, Lkotlin/jvm/internal/Intrinsics;->checkParameterIsNotNull(Ljava/lang/Object;Ljava/lang/String;)V
+    .line 57
+    if-eqz p1, :cond_0
 
-    .line 43
-    move-object v7, v0
+    .line 58
+    new-instance v0, Ljava/util/zip/Deflater;
 
-    invoke-direct {v7}, Ljava/lang/Object;-><init>()V
+    const/4 v1, -0x1
 
-    .line 45
-    move-object v7, v0
+    const/4 v2, 0x1
 
-    new-instance v8, Lokio/RealBufferedSink;
+    invoke-direct {v0, v1, v2}, Ljava/util/zip/Deflater;-><init>(IZ)V
 
-    move-object v12, v8
+    iput-object v0, p0, Lokio/GzipSink;->deflater:Ljava/util/zip/Deflater;
 
-    move-object v8, v12
+    .line 59
+    invoke-static {p1}, Lokio/Okio;->buffer(Lokio/Sink;)Lokio/BufferedSink;
 
-    move-object v9, v12
+    move-result-object v0
 
-    move-object v10, v1
-
-    invoke-direct {v9, v10}, Lokio/RealBufferedSink;-><init>(Lokio/Sink;)V
-
-    iput-object v8, v7, Lokio/GzipSink;->sink:Lokio/RealBufferedSink;
-
-    .line 49
-    move-object v7, v0
-
-    new-instance v8, Ljava/util/zip/Deflater;
-
-    move-object v12, v8
-
-    move-object v8, v12
-
-    move-object v9, v12
-
-    const/4 v10, -0x1
-
-    const/4 v11, 0x1
-
-    invoke-direct {v9, v10, v11}, Ljava/util/zip/Deflater;-><init>(IZ)V
-
-    iput-object v8, v7, Lokio/GzipSink;->deflater:Ljava/util/zip/Deflater;
-
-    .line 55
-    move-object v7, v0
-
-    new-instance v8, Lokio/DeflaterSink;
-
-    move-object v12, v8
-
-    move-object v8, v12
-
-    move-object v9, v12
-
-    move-object v10, v0
-
-    iget-object v10, v10, Lokio/GzipSink;->sink:Lokio/RealBufferedSink;
-
-    check-cast v10, Lokio/BufferedSink;
-
-    move-object v11, v0
-
-    iget-object v11, v11, Lokio/GzipSink;->deflater:Ljava/util/zip/Deflater;
-
-    invoke-direct {v9, v10, v11}, Lokio/DeflaterSink;-><init>(Lokio/BufferedSink;Ljava/util/zip/Deflater;)V
-
-    iput-object v8, v7, Lokio/GzipSink;->deflaterSink:Lokio/DeflaterSink;
+    iput-object v0, p0, Lokio/GzipSink;->sink:Lokio/BufferedSink;
 
     .line 60
-    move-object v7, v0
+    new-instance v0, Lokio/DeflaterSink;
 
-    new-instance v8, Ljava/util/zip/CRC32;
+    iget-object v1, p0, Lokio/GzipSink;->sink:Lokio/BufferedSink;
 
-    move-object v12, v8
+    iget-object v2, p0, Lokio/GzipSink;->deflater:Ljava/util/zip/Deflater;
 
-    move-object v8, v12
+    invoke-direct {v0, v1, v2}, Lokio/DeflaterSink;-><init>(Lokio/BufferedSink;Ljava/util/zip/Deflater;)V
 
-    move-object v9, v12
-
-    invoke-direct {v9}, Ljava/util/zip/CRC32;-><init>()V
-
-    iput-object v8, v7, Lokio/GzipSink;->crc:Ljava/util/zip/CRC32;
+    iput-object v0, p0, Lokio/GzipSink;->deflaterSink:Lokio/DeflaterSink;
 
     .line 62
-    nop
+    invoke-direct {p0}, Lokio/GzipSink;->writeHeader()V
 
-    .line 64
-    move-object v7, v0
-
-    iget-object v7, v7, Lokio/GzipSink;->sink:Lokio/RealBufferedSink;
-
-    move-object v2, v7
-
-    const/4 v7, 0x0
-
-    move v3, v7
-
-    .line 155
-    move-object v7, v2
-
-    iget-object v7, v7, Lokio/RealBufferedSink;->bufferField:Lokio/Buffer;
-
-    move-object v2, v7
-
-    .line 64
-    const/4 v7, 0x0
-
-    move v3, v7
-
-    const/4 v7, 0x0
-
-    move v4, v7
-
-    move-object v7, v2
-
-    move-object v5, v7
-
-    const/4 v7, 0x0
-
-    move v6, v7
-
-    .line 65
-    move-object v7, v5
-
-    const/16 v8, 0x1f8b
-
-    invoke-virtual {v7, v8}, Lokio/Buffer;->writeShort(I)Lokio/Buffer;
-
-    move-result-object v7
-
-    .line 66
-    move-object v7, v5
-
-    const/16 v8, 0x8
-
-    invoke-virtual {v7, v8}, Lokio/Buffer;->writeByte(I)Lokio/Buffer;
-
-    move-result-object v7
-
-    .line 67
-    move-object v7, v5
-
-    const/4 v8, 0x0
-
-    invoke-virtual {v7, v8}, Lokio/Buffer;->writeByte(I)Lokio/Buffer;
-
-    move-result-object v7
-
-    .line 68
-    move-object v7, v5
-
-    const/4 v8, 0x0
-
-    invoke-virtual {v7, v8}, Lokio/Buffer;->writeInt(I)Lokio/Buffer;
-
-    move-result-object v7
-
-    .line 69
-    move-object v7, v5
-
-    const/4 v8, 0x0
-
-    invoke-virtual {v7, v8}, Lokio/Buffer;->writeByte(I)Lokio/Buffer;
-
-    move-result-object v7
-
-    .line 70
-    move-object v7, v5
-
-    const/4 v8, 0x0
-
-    invoke-virtual {v7, v8}, Lokio/Buffer;->writeByte(I)Lokio/Buffer;
-
-    move-result-object v7
-
-    .line 71
-    nop
-
-    .line 64
-    nop
-
-    .line 72
+    .line 63
     return-void
+
+    .line 57
+    :cond_0
+    new-instance v0, Ljava/lang/IllegalArgumentException;
+
+    const-string v1, "sink == null"
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v0
 .end method
 
-.method private final updateCrc(Lokio/Buffer;J)V
-    .locals 18
+.method private updateCrc(Lokio/Buffer;J)V
+    .locals 5
+    .param p1, "buffer"    # Lokio/Buffer;
+    .param p2, "byteCount"    # J
 
-    .prologue 
-    .line 129
-    move-object/from16 v0, p0
+    .line 139
+    iget-object v0, p1, Lokio/Buffer;->head:Lokio/Segment;
 
-    move-object/from16 v1, p1
-
-    move-wide/from16 v2, p2
-
-    move-object v13, v1
-
-    iget-object v13, v13, Lokio/Buffer;->head:Lokio/Segment;
-
-    move-object/from16 v17, v13
-
-    move-object/from16 v13, v17
-
-    move-object/from16 v14, v17
-
-    if-nez v14, :cond_0
-
-    invoke-static {}, Lkotlin/jvm/internal/Intrinsics;->throwNpe()V
-
-    :cond_0
-    move-object v4, v13
-
-    .line 130
-    move-wide v13, v2
-
-    move-wide v5, v13
-
-    .line 131
+    .local v0, "head":Lokio/Segment;
     :goto_0
-    move-wide v13, v5
+    const-wide/16 v1, 0x0
 
-    const-wide/16 v15, 0x0
+    cmp-long v3, p2, v1
 
-    cmp-long v13, v13, v15
+    if-lez v3, :cond_0
 
-    if-lez v13, :cond_2
+    .line 140
+    iget v1, v0, Lokio/Segment;->limit:I
 
-    .line 132
-    move-object v13, v4
+    iget v2, v0, Lokio/Segment;->pos:I
 
-    iget v13, v13, Lokio/Segment;->limit:I
+    sub-int/2addr v1, v2
 
-    move-object v14, v4
+    int-to-long v1, v1
 
-    iget v14, v14, Lokio/Segment;->pos:I
+    invoke-static {p2, p3, v1, v2}, Ljava/lang/Math;->min(JJ)J
 
-    sub-int/2addr v13, v14
+    move-result-wide v1
 
-    move v8, v13
+    long-to-int v2, v1
 
-    const/4 v13, 0x0
+    .line 141
+    .local v2, "segmentLength":I
+    iget-object v1, p0, Lokio/GzipSink;->crc:Ljava/util/zip/CRC32;
 
-    move v9, v13
+    iget-object v3, v0, Lokio/Segment;->data:[B
 
-    .line 154
-    move v13, v8
+    iget v4, v0, Lokio/Segment;->pos:I
 
-    int-to-long v13, v13
+    invoke-virtual {v1, v3, v4, v2}, Ljava/util/zip/CRC32;->update([BII)V
 
-    move-wide v10, v13
+    .line 142
+    int-to-long v3, v2
 
-    const/4 v13, 0x0
+    sub-long/2addr p2, v3
 
-    move v12, v13
+    .line 139
+    .end local v2
+    iget-object v0, v0, Lokio/Segment;->next:Lokio/Segment;
 
-    move-wide v13, v5
-
-    move-wide v15, v10
-
-    invoke-static/range {v13 .. v16}, Ljava/lang/Math;->min(JJ)J
-
-    move-result-wide v13
-
-    nop
-
-    .line 132
-    long-to-int v13, v13
-
-    move v7, v13
-
-    .line 133
-    move-object v13, v0
-
-    iget-object v13, v13, Lokio/GzipSink;->crc:Ljava/util/zip/CRC32;
-
-    move-object v14, v4
-
-    iget-object v14, v14, Lokio/Segment;->data:[B
-
-    move-object v15, v4
-
-    iget v15, v15, Lokio/Segment;->pos:I
-
-    move/from16 v16, v7
-
-    invoke-virtual/range {v13 .. v16}, Ljava/util/zip/CRC32;->update([BII)V
-
-    .line 134
-    move-wide v13, v5
-
-    move v15, v7
-
-    int-to-long v15, v15
-
-    sub-long/2addr v13, v15
-
-    move-wide v5, v13
-
-    .line 135
-    move-object v13, v4
-
-    iget-object v13, v13, Lokio/Segment;->next:Lokio/Segment;
-
-    move-object/from16 v17, v13
-
-    move-object/from16 v13, v17
-
-    move-object/from16 v14, v17
-
-    if-nez v14, :cond_1
-
-    invoke-static {}, Lkotlin/jvm/internal/Intrinsics;->throwNpe()V
-
-    :cond_1
-    move-object v4, v13
-
-    .line 131
     goto :goto_0
 
-    .line 137
-    :cond_2
+    .line 144
+    .end local v0
+    :cond_0
     return-void
 .end method
 
-.method private final writeFooter()V
-    .locals 4
+.method private writeFooter()V
+    .locals 3
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;
+        }
+    .end annotation
 
-    .prologue 
+    .line 133
+    iget-object v0, p0, Lokio/GzipSink;->sink:Lokio/BufferedSink;
+
+    iget-object v1, p0, Lokio/GzipSink;->crc:Ljava/util/zip/CRC32;
+
+    invoke-virtual {v1}, Ljava/util/zip/CRC32;->getValue()J
+
+    move-result-wide v1
+
+    long-to-int v2, v1
+
+    invoke-interface {v0, v2}, Lokio/BufferedSink;->writeIntLe(I)Lokio/BufferedSink;
+
+    .line 134
+    iget-object v0, p0, Lokio/GzipSink;->sink:Lokio/BufferedSink;
+
+    iget-object v1, p0, Lokio/GzipSink;->deflater:Ljava/util/zip/Deflater;
+
+    invoke-virtual {v1}, Ljava/util/zip/Deflater;->getBytesRead()J
+
+    move-result-wide v1
+
+    long-to-int v2, v1
+
+    invoke-interface {v0, v2}, Lokio/BufferedSink;->writeIntLe(I)Lokio/BufferedSink;
+
+    .line 135
+    return-void
+.end method
+
+.method private writeHeader()V
+    .locals 2
+
     .line 123
-    move-object v0, p0
+    iget-object v0, p0, Lokio/GzipSink;->sink:Lokio/BufferedSink;
 
-    move-object v1, v0
+    invoke-interface {v0}, Lokio/BufferedSink;->buffer()Lokio/Buffer;
 
-    iget-object v1, v1, Lokio/GzipSink;->sink:Lokio/RealBufferedSink;
-
-    move-object v2, v0
-
-    iget-object v2, v2, Lokio/GzipSink;->crc:Ljava/util/zip/CRC32;
-
-    invoke-virtual {v2}, Ljava/util/zip/CRC32;->getValue()J
-
-    move-result-wide v2
-
-    long-to-int v2, v2
-
-    invoke-virtual {v1, v2}, Lokio/RealBufferedSink;->writeIntLe(I)Lokio/BufferedSink;
-
-    move-result-object v1
+    move-result-object v0
 
     .line 124
-    move-object v1, v0
+    .local v0, "buffer":Lokio/Buffer;
+    const/16 v1, 0x1f8b
 
-    iget-object v1, v1, Lokio/GzipSink;->sink:Lokio/RealBufferedSink;
-
-    move-object v2, v0
-
-    iget-object v2, v2, Lokio/GzipSink;->deflater:Ljava/util/zip/Deflater;
-
-    invoke-virtual {v2}, Ljava/util/zip/Deflater;->getBytesRead()J
-
-    move-result-wide v2
-
-    long-to-int v2, v2
-
-    invoke-virtual {v1, v2}, Lokio/RealBufferedSink;->writeIntLe(I)Lokio/BufferedSink;
-
-    move-result-object v1
+    invoke-virtual {v0, v1}, Lokio/Buffer;->writeShort(I)Lokio/Buffer;
 
     .line 125
+    const/16 v1, 0x8
+
+    invoke-virtual {v0, v1}, Lokio/Buffer;->writeByte(I)Lokio/Buffer;
+
+    .line 126
+    const/4 v1, 0x0
+
+    invoke-virtual {v0, v1}, Lokio/Buffer;->writeByte(I)Lokio/Buffer;
+
+    .line 127
+    invoke-virtual {v0, v1}, Lokio/Buffer;->writeInt(I)Lokio/Buffer;
+
+    .line 128
+    invoke-virtual {v0, v1}, Lokio/Buffer;->writeByte(I)Lokio/Buffer;
+
+    .line 129
+    invoke-virtual {v0, v1}, Lokio/Buffer;->writeByte(I)Lokio/Buffer;
+
+    .line 130
     return-void
 .end method
 
 
 # virtual methods
-.method public final -deprecated_deflater()Ljava/util/zip/Deflater;
-    .locals 2
-    .annotation runtime Lkotlin/Deprecated;
-        level = .enum Lkotlin/DeprecationLevel;->ERROR:Lkotlin/DeprecationLevel;
-        message = "moved to val"
-        replaceWith = .subannotation Lkotlin/ReplaceWith;
-            expression = "deflater"
-            imports = {}
-        .end subannotation
-    .end annotation
-    .annotation build Lkotlin/jvm/JvmName;
-        name = "-deprecated_deflater"
-    .end annotation
-    .annotation build Lorg/jetbrains/annotations/NotNull;
-    .end annotation
-
-    .prologue 
-    .line 144
-    move-object v0, p0
-
-    move-object v1, v0
-
-    iget-object v1, v1, Lokio/GzipSink;->deflater:Ljava/util/zip/Deflater;
-
-    move-object v0, v1
-
-    return-object v0
-.end method
-
 .method public close()V
-    .locals 5
+    .locals 2
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .prologue 
-    .line 90
-    move-object v0, p0
+    .line 82
+    iget-boolean v0, p0, Lokio/GzipSink;->closed:Z
 
-    move-object v3, v0
+    if-eqz v0, :cond_0
 
-    iget-boolean v3, v3, Lokio/GzipSink;->closed:Z
-
-    if-eqz v3, :cond_0
-
-    .line 120
-    :goto_0
     return-void
 
-    .line 97
+    .line 89
     :cond_0
-    const/4 v3, 0x0
+    const/4 v0, 0x0
 
-    check-cast v3, Ljava/lang/Throwable;
-
-    move-object v1, v3
-
-    .line 98
-    nop
-
-    .line 99
-    move-object v3, v0
-
+    .line 91
+    .local v0, "thrown":Ljava/lang/Throwable;
     :try_start_0
-    iget-object v3, v3, Lokio/GzipSink;->deflaterSink:Lokio/DeflaterSink;
+    iget-object v1, p0, Lokio/GzipSink;->deflaterSink:Lokio/DeflaterSink;
 
-    invoke-virtual {v3}, Lokio/DeflaterSink;->finishDeflate$okio()V
+    invoke-virtual {v1}, Lokio/DeflaterSink;->finishDeflate()V
 
-    .line 100
-    move-object v3, v0
+    .line 92
+    invoke-direct {p0}, Lokio/GzipSink;->writeFooter()V
 
-    invoke-direct {v3}, Lokio/GzipSink;->writeFooter()V
-
-    .line 103
+    .line 95
     :try_end_0
     .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
 
-    :goto_1
-    nop
+    goto :goto_0
 
-    .line 106
-    move-object v3, v0
+    .line 93
+    :catch_0
+    move-exception v1
 
+    .line 94
+    .local v1, "e":Ljava/lang/Throwable;
+    move-object v0, v1
+
+    .line 98
+    .end local v1
+    :goto_0
     :try_start_1
-    iget-object v3, v3, Lokio/GzipSink;->deflater:Ljava/util/zip/Deflater;
+    iget-object v1, p0, Lokio/GzipSink;->deflater:Ljava/util/zip/Deflater;
 
-    invoke-virtual {v3}, Ljava/util/zip/Deflater;->end()V
+    invoke-virtual {v1}, Ljava/util/zip/Deflater;->end()V
 
-    .line 109
+    .line 101
     :try_end_1
     .catch Ljava/lang/Throwable; {:try_start_1 .. :try_end_1} :catch_1
 
+    goto :goto_1
+
+    .line 99
+    :catch_1
+    move-exception v1
+
+    .line 100
+    .restart local v1
+    if-nez v0, :cond_1
+
+    move-object v0, v1
+
+    .line 104
+    .end local v1
     :cond_1
-    :goto_2
-    nop
-
-    .line 112
-    move-object v3, v0
-
+    :goto_1
     :try_start_2
-    iget-object v3, v3, Lokio/GzipSink;->sink:Lokio/RealBufferedSink;
+    iget-object v1, p0, Lokio/GzipSink;->sink:Lokio/BufferedSink;
 
-    invoke-virtual {v3}, Lokio/RealBufferedSink;->close()V
+    invoke-interface {v1}, Lokio/BufferedSink;->close()V
 
-    .line 115
+    .line 107
     :try_end_2
     .catch Ljava/lang/Throwable; {:try_start_2 .. :try_end_2} :catch_2
 
-    :cond_2
-    :goto_3
-    move-object v3, v0
-
-    const/4 v4, 0x1
-
-    iput-boolean v4, v3, Lokio/GzipSink;->closed:Z
-
-    .line 119
-    move-object v3, v1
-
-    if-eqz v3, :cond_3
-
-    move-object v3, v1
-
-    throw v3
-
-    .line 101
-    :catch_0
-    move-exception v3
-
-    move-object v2, v3
-
-    .line 102
-    move-object v3, v2
-
-    move-object v1, v3
-
-    goto :goto_1
-
-    .line 107
-    :catch_1
-    move-exception v3
-
-    move-object v2, v3
-
-    .line 108
-    move-object v3, v1
-
-    if-nez v3, :cond_1
-
-    move-object v3, v2
-
-    move-object v1, v3
-
     goto :goto_2
 
-    .line 113
+    .line 105
     :catch_2
-    move-exception v3
+    move-exception v1
 
-    move-object v2, v3
-
-    .line 114
-    move-object v3, v1
-
-    if-nez v3, :cond_2
-
-    move-object v3, v2
-
-    move-object v1, v3
-
-    goto :goto_3
-
-    .line 120
-    :cond_3
-    goto :goto_0
-.end method
-
-.method public final deflater()Ljava/util/zip/Deflater;
-    .locals 2
-    .annotation build Lkotlin/jvm/JvmName;
-        name = "deflater"
-    .end annotation
-    .annotation build Lorg/jetbrains/annotations/NotNull;
-    .end annotation
-
-    .prologue 
-    .line 49
-    move-object v0, p0
-
-    move-object v1, v0
-
-    iget-object v1, v1, Lokio/GzipSink;->deflater:Ljava/util/zip/Deflater;
+    .line 106
+    .restart local v1
+    if-nez v0, :cond_2
 
     move-object v0, v1
+
+    .line 108
+    .end local v1
+    :cond_2
+    :goto_2
+    const/4 v1, 0x1
+
+    iput-boolean v1, p0, Lokio/GzipSink;->closed:Z
+
+    .line 110
+    if-eqz v0, :cond_3
+
+    invoke-static {v0}, Lokio/Util;->sneakyRethrow(Ljava/lang/Throwable;)V
+
+    .line 111
+    :cond_3
+    return-void
+.end method
+
+.method public deflater()Ljava/util/zip/Deflater;
+    .locals 1
+
+    .line 118
+    iget-object v0, p0, Lokio/GzipSink;->deflater:Ljava/util/zip/Deflater;
 
     return-object v0
 .end method
 
 .method public flush()V
-    .locals 2
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .prologue 
-    .line 84
-    move-object v0, p0
+    .line 74
+    iget-object v0, p0, Lokio/GzipSink;->deflaterSink:Lokio/DeflaterSink;
 
-    move-object v1, v0
+    invoke-virtual {v0}, Lokio/DeflaterSink;->flush()V
 
-    iget-object v1, v1, Lokio/GzipSink;->deflaterSink:Lokio/DeflaterSink;
-
-    invoke-virtual {v1}, Lokio/DeflaterSink;->flush()V
-
+    .line 75
     return-void
 .end method
 
 .method public timeout()Lokio/Timeout;
-    .locals 2
-    .annotation build Lorg/jetbrains/annotations/NotNull;
-    .end annotation
+    .locals 1
 
-    .prologue 
-    .line 86
-    move-object v0, p0
+    .line 78
+    iget-object v0, p0, Lokio/GzipSink;->sink:Lokio/BufferedSink;
 
-    move-object v1, v0
+    invoke-interface {v0}, Lokio/BufferedSink;->timeout()Lokio/Timeout;
 
-    iget-object v1, v1, Lokio/GzipSink;->sink:Lokio/RealBufferedSink;
-
-    invoke-virtual {v1}, Lokio/RealBufferedSink;->timeout()Lokio/Timeout;
-
-    move-result-object v1
-
-    move-object v0, v1
+    move-result-object v0
 
     return-object v0
 .end method
 
 .method public write(Lokio/Buffer;J)V
-    .locals 13
-    .param p1    # Lokio/Buffer;
-        .annotation build Lorg/jetbrains/annotations/NotNull;
-        .end annotation
-    .end param
+    .locals 3
+    .param p1, "source"    # Lokio/Buffer;
+    .param p2, "byteCount"    # J
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .prologue 
-    move-object v0, p0
+    .line 66
+    const-wide/16 v0, 0x0
 
-    move-object v1, p1
+    cmp-long v2, p2, v0
 
-    move-wide v2, p2
+    if-ltz v2, :cond_1
 
-    move-object v8, v1
+    .line 67
+    cmp-long v2, p2, v0
 
-    const-string v9, "source"
+    if-nez v2, :cond_0
 
-    invoke-static {v8, v9}, Lkotlin/jvm/internal/Intrinsics;->checkParameterIsNotNull(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 76
-    move-wide v8, v2
-
-    const-wide/16 v10, 0x0
-
-    cmp-long v8, v8, v10
-
-    if-ltz v8, :cond_0
-
-    const/4 v8, 0x1
-
-    :goto_0
-    move v4, v8
-
-    const/4 v8, 0x0
-
-    move v5, v8
-
-    const/4 v8, 0x0
-
-    move v6, v8
-
-    move v8, v4
-
-    if-nez v8, :cond_1
-
-    const/4 v8, 0x0
-
-    move v7, v8
-
-    new-instance v8, Ljava/lang/StringBuilder;
-
-    move-object v12, v8
-
-    move-object v8, v12
-
-    move-object v9, v12
-
-    invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v9, "byteCount < 0: "
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    move-wide v9, v2
-
-    invoke-virtual {v8, v9, v10}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v8
-
-    move-object v6, v8
-
-    new-instance v8, Ljava/lang/IllegalArgumentException;
-
-    move-object v12, v8
-
-    move-object v8, v12
-
-    move-object v9, v12
-
-    move-object v10, v6
-
-    invoke-virtual {v10}, Ljava/lang/Object;->toString()Ljava/lang/String;
-
-    move-result-object v10
-
-    invoke-direct {v9, v10}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
-    check-cast v8, Ljava/lang/Throwable;
-
-    throw v8
-
-    :cond_0
-    const/4 v8, 0x0
-
-    goto :goto_0
-
-    .line 77
-    :cond_1
-    move-wide v8, v2
-
-    const-wide/16 v10, 0x0
-
-    cmp-long v8, v8, v10
-
-    if-nez v8, :cond_2
-
-    .line 81
-    :goto_1
     return-void
 
-    .line 79
-    :cond_2
-    move-object v8, v0
+    .line 69
+    :cond_0
+    invoke-direct {p0, p1, p2, p3}, Lokio/GzipSink;->updateCrc(Lokio/Buffer;J)V
 
-    move-object v9, v1
+    .line 70
+    iget-object v0, p0, Lokio/GzipSink;->deflaterSink:Lokio/DeflaterSink;
 
-    move-wide v10, v2
+    invoke-virtual {v0, p1, p2, p3}, Lokio/DeflaterSink;->write(Lokio/Buffer;J)V
 
-    invoke-direct {v8, v9, v10, v11}, Lokio/GzipSink;->updateCrc(Lokio/Buffer;J)V
+    .line 71
+    return-void
 
-    .line 80
-    move-object v8, v0
+    .line 66
+    :cond_1
+    new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    iget-object v8, v8, Lokio/GzipSink;->deflaterSink:Lokio/DeflaterSink;
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    move-object v9, v1
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    move-wide v10, v2
+    const-string v2, "byteCount < 0: "
 
-    invoke-virtual {v8, v9, v10, v11}, Lokio/DeflaterSink;->write(Lokio/Buffer;J)V
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 81
-    goto :goto_1
+    invoke-virtual {v1, p2, p3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v0
 .end method

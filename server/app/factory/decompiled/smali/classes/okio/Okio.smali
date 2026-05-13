@@ -1,277 +1,296 @@
 .class public final Lokio/Okio;
 .super Ljava/lang/Object;
+.source "Okio.java"
 
 
-# annotations
-.annotation runtime Lkotlin/Metadata;
-    bv = {
-        0x1,
-        0x0,
-        0x3
-    }
-    d1 = {
-        "okio/Okio__JvmOkioKt",
-        "okio/Okio__OkioKt"
-    }
-    k = 0x4
-    mv = {
-        0x1,
-        0x1,
-        0x10
-    }
-.end annotation
+# static fields
+.field static final logger:Ljava/util/logging/Logger;
 
 
 # direct methods
-.method public static final appendingSink(Ljava/io/File;)Lokio/Sink;
+.method static constructor <clinit>()V
+    .locals 1
+
+    .line 39
+    const-class v0, Lokio/Okio;
+
+    invoke-virtual {v0}, Ljava/lang/Class;->getName()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v0}, Ljava/util/logging/Logger;->getLogger(Ljava/lang/String;)Ljava/util/logging/Logger;
+
+    move-result-object v0
+
+    sput-object v0, Lokio/Okio;->logger:Ljava/util/logging/Logger;
+
+    return-void
+.end method
+
+.method private constructor <init>()V
+    .locals 0
+
+    .line 41
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 42
+    return-void
+.end method
+
+.method public static appendingSink(Ljava/io/File;)Lokio/Sink;
     .locals 2
-    .param p0    # Ljava/io/File;
-        .annotation build Lorg/jetbrains/annotations/NotNull;
-        .end annotation
-    .end param
+    .param p0, "file"    # Ljava/io/File;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/FileNotFoundException;
         }
     .end annotation
-    .annotation build Lorg/jetbrains/annotations/NotNull;
-    .end annotation
 
-    .prologue 
-    .line 1
-    move-object v0, p0
+    .line 184
+    if-eqz p0, :cond_0
 
-    move-object v1, v0
+    .line 185
+    new-instance v0, Ljava/io/FileOutputStream;
 
-    invoke-static {v1}, Lokio/Okio__JvmOkioKt;->appendingSink(Ljava/io/File;)Lokio/Sink;
+    const/4 v1, 0x1
 
-    move-result-object v1
+    invoke-direct {v0, p0, v1}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;Z)V
 
-    move-object v0, v1
+    invoke-static {v0}, Lokio/Okio;->sink(Ljava/io/OutputStream;)Lokio/Sink;
+
+    move-result-object v0
+
+    return-object v0
+
+    .line 184
+    :cond_0
+    new-instance v0, Ljava/lang/IllegalArgumentException;
+
+    const-string v1, "file == null"
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+.end method
+
+.method public static blackhole()Lokio/Sink;
+    .locals 1
+
+    .line 197
+    new-instance v0, Lokio/Okio$3;
+
+    invoke-direct {v0}, Lokio/Okio$3;-><init>()V
 
     return-object v0
 .end method
 
-.method public static final blackhole()Lokio/Sink;
+.method public static buffer(Lokio/Sink;)Lokio/BufferedSink;
     .locals 1
-    .annotation build Lkotlin/jvm/JvmName;
-        name = "blackhole"
-    .end annotation
-    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .param p0, "sink"    # Lokio/Sink;
+
+    .line 59
+    new-instance v0, Lokio/RealBufferedSink;
+
+    invoke-direct {v0, p0}, Lokio/RealBufferedSink;-><init>(Lokio/Sink;)V
+
+    return-object v0
+.end method
+
+.method public static buffer(Lokio/Source;)Lokio/BufferedSource;
+    .locals 1
+    .param p0, "source"    # Lokio/Source;
+
+    .line 50
+    new-instance v0, Lokio/RealBufferedSource;
+
+    invoke-direct {v0, p0}, Lokio/RealBufferedSource;-><init>(Lokio/Source;)V
+
+    return-object v0
+.end method
+
+.method static isAndroidGetsocknameError(Ljava/lang/AssertionError;)Z
+    .locals 2
+    .param p0, "e"    # Ljava/lang/AssertionError;
+
+    .line 257
+    invoke-virtual {p0}, Ljava/lang/AssertionError;->getCause()Ljava/lang/Throwable;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_0
+
+    invoke-virtual {p0}, Ljava/lang/AssertionError;->getMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_0
+
+    .line 258
+    invoke-virtual {p0}, Ljava/lang/AssertionError;->getMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    const-string v1, "getsockname failed"
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    const/4 v0, 0x1
+
+    goto :goto_0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    .line 257
+    :goto_0
+    return v0
+.end method
+
+.method public static sink(Ljava/io/File;)Lokio/Sink;
+    .locals 2
+    .param p0, "file"    # Ljava/io/File;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/FileNotFoundException;
+        }
     .end annotation
 
-    .prologue 
-    .line 1
-    invoke-static {}, Lokio/Okio__OkioKt;->blackhole()Lokio/Sink;
+    .line 178
+    if-eqz p0, :cond_0
+
+    .line 179
+    new-instance v0, Ljava/io/FileOutputStream;
+
+    invoke-direct {v0, p0}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
+
+    invoke-static {v0}, Lokio/Okio;->sink(Ljava/io/OutputStream;)Lokio/Sink;
+
+    move-result-object v0
+
+    return-object v0
+
+    .line 178
+    :cond_0
+    new-instance v0, Ljava/lang/IllegalArgumentException;
+
+    const-string v1, "file == null"
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+.end method
+
+.method public static sink(Ljava/io/OutputStream;)Lokio/Sink;
+    .locals 1
+    .param p0, "out"    # Ljava/io/OutputStream;
+
+    .line 64
+    new-instance v0, Lokio/Timeout;
+
+    invoke-direct {v0}, Lokio/Timeout;-><init>()V
+
+    invoke-static {p0, v0}, Lokio/Okio;->sink(Ljava/io/OutputStream;Lokio/Timeout;)Lokio/Sink;
 
     move-result-object v0
 
     return-object v0
 .end method
 
-.method public static final buffer(Lokio/Sink;)Lokio/BufferedSink;
+.method private static sink(Ljava/io/OutputStream;Lokio/Timeout;)Lokio/Sink;
     .locals 2
-    .param p0    # Lokio/Sink;
-        .annotation build Lorg/jetbrains/annotations/NotNull;
-        .end annotation
-    .end param
-    .annotation build Lorg/jetbrains/annotations/NotNull;
-    .end annotation
+    .param p0, "out"    # Ljava/io/OutputStream;
+    .param p1, "timeout"    # Lokio/Timeout;
 
-    .prologue 
-    .line 1
-    move-object v0, p0
+    .line 68
+    if-eqz p0, :cond_1
 
-    move-object v1, v0
+    .line 69
+    if-eqz p1, :cond_0
 
-    invoke-static {v1}, Lokio/Okio__OkioKt;->buffer(Lokio/Sink;)Lokio/BufferedSink;
+    .line 71
+    new-instance v0, Lokio/Okio$1;
 
-    move-result-object v1
-
-    move-object v0, v1
+    invoke-direct {v0, p1, p0}, Lokio/Okio$1;-><init>(Lokio/Timeout;Ljava/io/OutputStream;)V
 
     return-object v0
+
+    .line 69
+    :cond_0
+    new-instance v0, Ljava/lang/IllegalArgumentException;
+
+    const-string v1, "timeout == null"
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
+    .line 68
+    :cond_1
+    new-instance v0, Ljava/lang/IllegalArgumentException;
+
+    const-string v1, "out == null"
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v0
 .end method
 
-.method public static final buffer(Lokio/Source;)Lokio/BufferedSource;
-    .locals 2
-    .param p0    # Lokio/Source;
-        .annotation build Lorg/jetbrains/annotations/NotNull;
-        .end annotation
-    .end param
-    .annotation build Lorg/jetbrains/annotations/NotNull;
-    .end annotation
-
-    .prologue 
-    .line 1
-    move-object v0, p0
-
-    move-object v1, v0
-
-    invoke-static {v1}, Lokio/Okio__OkioKt;->buffer(Lokio/Source;)Lokio/BufferedSource;
-
-    move-result-object v1
-
-    move-object v0, v1
-
-    return-object v0
-.end method
-
-.method public static final isAndroidGetsocknameError(Ljava/lang/AssertionError;)Z
-    .locals 2
-    .param p0    # Ljava/lang/AssertionError;
-        .annotation build Lorg/jetbrains/annotations/NotNull;
-        .end annotation
-    .end param
-
-    .prologue 
-    .line 1
-    move-object v0, p0
-
-    move-object v1, v0
-
-    invoke-static {v1}, Lokio/Okio__JvmOkioKt;->isAndroidGetsocknameError(Ljava/lang/AssertionError;)Z
-
-    move-result v1
-
-    move v0, v1
-
-    return v0
-.end method
-
-.method public static final sink(Ljava/io/File;)Lokio/Sink;
-    .locals 5
-    .param p0    # Ljava/io/File;
-        .annotation build Lorg/jetbrains/annotations/NotNull;
-        .end annotation
-    .end param
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Ljava/io/FileNotFoundException;
-        }
-    .end annotation
-    .annotation build Lkotlin/jvm/JvmOverloads;
-    .end annotation
-    .annotation build Lorg/jetbrains/annotations/NotNull;
-    .end annotation
-
-    move-object v0, p0
-
-    move-object v1, v0
-
-    const/4 v2, 0x0
-
-    const/4 v3, 0x1
-
-    const/4 v4, 0x0
-
-    invoke-static {v1, v2, v3, v4}, Lokio/Okio;->sink$default(Ljava/io/File;ZILjava/lang/Object;)Lokio/Sink;
-
-    move-result-object v1
-
-    move-object v0, v1
-
-    return-object v0
-.end method
-
-.method public static final sink(Ljava/io/File;Z)Lokio/Sink;
-    .locals 4
-    .param p0    # Ljava/io/File;
-        .annotation build Lorg/jetbrains/annotations/NotNull;
-        .end annotation
-    .end param
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Ljava/io/FileNotFoundException;
-        }
-    .end annotation
-    .annotation build Lkotlin/jvm/JvmOverloads;
-    .end annotation
-    .annotation build Lorg/jetbrains/annotations/NotNull;
-    .end annotation
-
-    .prologue 
-    .line 1
-    move-object v0, p0
-
-    move v1, p1
-
-    move-object v2, v0
-
-    move v3, v1
-
-    invoke-static {v2, v3}, Lokio/Okio__JvmOkioKt;->sink(Ljava/io/File;Z)Lokio/Sink;
-
-    move-result-object v2
-
-    move-object v0, v2
-
-    return-object v0
-.end method
-
-.method public static final sink(Ljava/io/OutputStream;)Lokio/Sink;
-    .locals 2
-    .param p0    # Ljava/io/OutputStream;
-        .annotation build Lorg/jetbrains/annotations/NotNull;
-        .end annotation
-    .end param
-    .annotation build Lorg/jetbrains/annotations/NotNull;
-    .end annotation
-
-    .prologue 
-    .line 1
-    move-object v0, p0
-
-    move-object v1, v0
-
-    invoke-static {v1}, Lokio/Okio__JvmOkioKt;->sink(Ljava/io/OutputStream;)Lokio/Sink;
-
-    move-result-object v1
-
-    move-object v0, v1
-
-    return-object v0
-.end method
-
-.method public static final sink(Ljava/net/Socket;)Lokio/Sink;
-    .locals 2
-    .param p0    # Ljava/net/Socket;
-        .annotation build Lorg/jetbrains/annotations/NotNull;
-        .end annotation
-    .end param
+.method public static sink(Ljava/net/Socket;)Lokio/Sink;
+    .locals 3
+    .param p0, "socket"    # Ljava/net/Socket;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
-    .annotation build Lorg/jetbrains/annotations/NotNull;
-    .end annotation
 
-    .prologue 
-    .line 1
-    move-object v0, p0
+    .line 115
+    if-eqz p0, :cond_0
 
-    move-object v1, v0
+    .line 116
+    invoke-static {p0}, Lokio/Okio;->timeout(Ljava/net/Socket;)Lokio/AsyncTimeout;
 
-    invoke-static {v1}, Lokio/Okio__JvmOkioKt;->sink(Ljava/net/Socket;)Lokio/Sink;
+    move-result-object v0
+
+    .line 117
+    .local v0, "timeout":Lokio/AsyncTimeout;
+    invoke-virtual {p0}, Ljava/net/Socket;->getOutputStream()Ljava/io/OutputStream;
 
     move-result-object v1
 
-    move-object v0, v1
+    invoke-static {v1, v0}, Lokio/Okio;->sink(Ljava/io/OutputStream;Lokio/Timeout;)Lokio/Sink;
 
-    return-object v0
+    move-result-object v1
+
+    .line 118
+    .local v1, "sink":Lokio/Sink;
+    invoke-virtual {v0, v1}, Lokio/AsyncTimeout;->sink(Lokio/Sink;)Lokio/Sink;
+
+    move-result-object v2
+
+    return-object v2
+
+    .line 115
+    .end local v0
+    .end local v1
+    :cond_0
+    new-instance v0, Ljava/lang/IllegalArgumentException;
+
+    const-string v1, "socket == null"
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v0
 .end method
 
-.method public static final varargs sink(Ljava/nio/file/Path;[Ljava/nio/file/OpenOption;)Lokio/Sink;
-    .locals 4
-    .param p0    # Ljava/nio/file/Path;
-        .annotation build Lorg/jetbrains/annotations/NotNull;
-        .end annotation
-    .end param
-    .param p1    # [Ljava/nio/file/OpenOption;
-        .annotation build Lorg/jetbrains/annotations/NotNull;
-        .end annotation
-    .end param
+.method public static varargs sink(Ljava/nio/file/Path;[Ljava/nio/file/OpenOption;)Lokio/Sink;
+    .locals 2
+    .param p0, "path"    # Ljava/nio/file/Path;
+    .param p1, "options"    # [Ljava/nio/file/OpenOption;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -279,155 +298,173 @@
     .end annotation
     .annotation build Lorg/codehaus/mojo/animal_sniffer/IgnoreJRERequirement;
     .end annotation
-    .annotation build Lorg/jetbrains/annotations/NotNull;
-    .end annotation
 
-    .prologue 
-    .line 1
-    move-object v0, p0
+    .line 191
+    if-eqz p0, :cond_0
 
-    move-object v1, p1
+    .line 192
+    invoke-static {p0, p1}, Ljava/nio/file/Files;->newOutputStream(Ljava/nio/file/Path;[Ljava/nio/file/OpenOption;)Ljava/io/OutputStream;
 
-    move-object v2, v0
+    move-result-object v0
 
-    move-object v3, v1
+    invoke-static {v0}, Lokio/Okio;->sink(Ljava/io/OutputStream;)Lokio/Sink;
 
-    invoke-static {v2, v3}, Lokio/Okio__JvmOkioKt;->sink(Ljava/nio/file/Path;[Ljava/nio/file/OpenOption;)Lokio/Sink;
-
-    move-result-object v2
-
-    move-object v0, v2
+    move-result-object v0
 
     return-object v0
+
+    .line 191
+    :cond_0
+    new-instance v0, Ljava/lang/IllegalArgumentException;
+
+    const-string v1, "path == null"
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v0
 .end method
 
-.method public static synthetic sink$default(Ljava/io/File;ZILjava/lang/Object;)Lokio/Sink;
-    .locals 8
+.method public static source(Ljava/io/File;)Lokio/Source;
+    .locals 2
+    .param p0, "file"    # Ljava/io/File;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/FileNotFoundException;
         }
     .end annotation
 
-    .prologue 
-    .line 1
-    move-object v0, p0
+    .line 165
+    if-eqz p0, :cond_0
 
-    move v1, p1
+    .line 166
+    new-instance v0, Ljava/io/FileInputStream;
 
-    move v2, p2
+    invoke-direct {v0, p0}, Ljava/io/FileInputStream;-><init>(Ljava/io/File;)V
 
-    move-object v3, p3
+    invoke-static {v0}, Lokio/Okio;->source(Ljava/io/InputStream;)Lokio/Source;
 
-    move-object v4, v0
+    move-result-object v0
 
-    move v5, v1
+    return-object v0
 
-    move v6, v2
+    .line 165
+    :cond_0
+    new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    move-object v7, v3
+    const-string v1, "file == null"
 
-    invoke-static {v4, v5, v6, v7}, Lokio/Okio__JvmOkioKt;->sink$default(Ljava/io/File;ZILjava/lang/Object;)Lokio/Sink;
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    move-result-object v4
+    throw v0
+.end method
 
-    move-object v0, v4
+.method public static source(Ljava/io/InputStream;)Lokio/Source;
+    .locals 1
+    .param p0, "in"    # Ljava/io/InputStream;
+
+    .line 123
+    new-instance v0, Lokio/Timeout;
+
+    invoke-direct {v0}, Lokio/Timeout;-><init>()V
+
+    invoke-static {p0, v0}, Lokio/Okio;->source(Ljava/io/InputStream;Lokio/Timeout;)Lokio/Source;
+
+    move-result-object v0
 
     return-object v0
 .end method
 
-.method public static final source(Ljava/io/File;)Lokio/Source;
+.method private static source(Ljava/io/InputStream;Lokio/Timeout;)Lokio/Source;
     .locals 2
-    .param p0    # Ljava/io/File;
-        .annotation build Lorg/jetbrains/annotations/NotNull;
-        .end annotation
-    .end param
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Ljava/io/FileNotFoundException;
-        }
-    .end annotation
-    .annotation build Lorg/jetbrains/annotations/NotNull;
-    .end annotation
+    .param p0, "in"    # Ljava/io/InputStream;
+    .param p1, "timeout"    # Lokio/Timeout;
 
-    .prologue 
-    .line 1
-    move-object v0, p0
+    .line 127
+    if-eqz p0, :cond_1
 
-    move-object v1, v0
+    .line 128
+    if-eqz p1, :cond_0
 
-    invoke-static {v1}, Lokio/Okio__JvmOkioKt;->source(Ljava/io/File;)Lokio/Source;
+    .line 130
+    new-instance v0, Lokio/Okio$2;
 
-    move-result-object v1
-
-    move-object v0, v1
+    invoke-direct {v0, p1, p0}, Lokio/Okio$2;-><init>(Lokio/Timeout;Ljava/io/InputStream;)V
 
     return-object v0
+
+    .line 128
+    :cond_0
+    new-instance v0, Ljava/lang/IllegalArgumentException;
+
+    const-string v1, "timeout == null"
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
+    .line 127
+    :cond_1
+    new-instance v0, Ljava/lang/IllegalArgumentException;
+
+    const-string v1, "in == null"
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v0
 .end method
 
-.method public static final source(Ljava/io/InputStream;)Lokio/Source;
-    .locals 2
-    .param p0    # Ljava/io/InputStream;
-        .annotation build Lorg/jetbrains/annotations/NotNull;
-        .end annotation
-    .end param
-    .annotation build Lorg/jetbrains/annotations/NotNull;
-    .end annotation
-
-    .prologue 
-    .line 1
-    move-object v0, p0
-
-    move-object v1, v0
-
-    invoke-static {v1}, Lokio/Okio__JvmOkioKt;->source(Ljava/io/InputStream;)Lokio/Source;
-
-    move-result-object v1
-
-    move-object v0, v1
-
-    return-object v0
-.end method
-
-.method public static final source(Ljava/net/Socket;)Lokio/Source;
-    .locals 2
-    .param p0    # Ljava/net/Socket;
-        .annotation build Lorg/jetbrains/annotations/NotNull;
-        .end annotation
-    .end param
+.method public static source(Ljava/net/Socket;)Lokio/Source;
+    .locals 3
+    .param p0, "socket"    # Ljava/net/Socket;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
-    .annotation build Lorg/jetbrains/annotations/NotNull;
-    .end annotation
 
-    .prologue 
-    .line 1
-    move-object v0, p0
+    .line 218
+    if-eqz p0, :cond_0
 
-    move-object v1, v0
+    .line 219
+    invoke-static {p0}, Lokio/Okio;->timeout(Ljava/net/Socket;)Lokio/AsyncTimeout;
 
-    invoke-static {v1}, Lokio/Okio__JvmOkioKt;->source(Ljava/net/Socket;)Lokio/Source;
+    move-result-object v0
+
+    .line 220
+    .local v0, "timeout":Lokio/AsyncTimeout;
+    invoke-virtual {p0}, Ljava/net/Socket;->getInputStream()Ljava/io/InputStream;
 
     move-result-object v1
 
-    move-object v0, v1
+    invoke-static {v1, v0}, Lokio/Okio;->source(Ljava/io/InputStream;Lokio/Timeout;)Lokio/Source;
 
-    return-object v0
+    move-result-object v1
+
+    .line 221
+    .local v1, "source":Lokio/Source;
+    invoke-virtual {v0, v1}, Lokio/AsyncTimeout;->source(Lokio/Source;)Lokio/Source;
+
+    move-result-object v2
+
+    return-object v2
+
+    .line 218
+    .end local v0
+    .end local v1
+    :cond_0
+    new-instance v0, Ljava/lang/IllegalArgumentException;
+
+    const-string v1, "socket == null"
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v0
 .end method
 
-.method public static final varargs source(Ljava/nio/file/Path;[Ljava/nio/file/OpenOption;)Lokio/Source;
-    .locals 4
-    .param p0    # Ljava/nio/file/Path;
-        .annotation build Lorg/jetbrains/annotations/NotNull;
-        .end annotation
-    .end param
-    .param p1    # [Ljava/nio/file/OpenOption;
-        .annotation build Lorg/jetbrains/annotations/NotNull;
-        .end annotation
-    .end param
+.method public static varargs source(Ljava/nio/file/Path;[Ljava/nio/file/OpenOption;)Lokio/Source;
+    .locals 2
+    .param p0, "path"    # Ljava/nio/file/Path;
+    .param p1, "options"    # [Ljava/nio/file/OpenOption;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
@@ -435,24 +472,40 @@
     .end annotation
     .annotation build Lorg/codehaus/mojo/animal_sniffer/IgnoreJRERequirement;
     .end annotation
-    .annotation build Lorg/jetbrains/annotations/NotNull;
-    .end annotation
 
-    .prologue 
-    .line 1
-    move-object v0, p0
+    .line 172
+    if-eqz p0, :cond_0
 
-    move-object v1, p1
+    .line 173
+    invoke-static {p0, p1}, Ljava/nio/file/Files;->newInputStream(Ljava/nio/file/Path;[Ljava/nio/file/OpenOption;)Ljava/io/InputStream;
 
-    move-object v2, v0
+    move-result-object v0
 
-    move-object v3, v1
+    invoke-static {v0}, Lokio/Okio;->source(Ljava/io/InputStream;)Lokio/Source;
 
-    invoke-static {v2, v3}, Lokio/Okio__JvmOkioKt;->source(Ljava/nio/file/Path;[Ljava/nio/file/OpenOption;)Lokio/Source;
+    move-result-object v0
 
-    move-result-object v2
+    return-object v0
 
-    move-object v0, v2
+    .line 172
+    :cond_0
+    new-instance v0, Ljava/lang/IllegalArgumentException;
+
+    const-string v1, "path == null"
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+.end method
+
+.method private static timeout(Ljava/net/Socket;)Lokio/AsyncTimeout;
+    .locals 1
+    .param p0, "socket"    # Ljava/net/Socket;
+
+    .line 225
+    new-instance v0, Lokio/Okio$4;
+
+    invoke-direct {v0, p0}, Lokio/Okio$4;-><init>(Ljava/net/Socket;)V
 
     return-object v0
 .end method

