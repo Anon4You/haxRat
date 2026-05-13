@@ -1,1 +1,82 @@
-[]
+[
+  {
+    "name": "res/drawable-hdpi-v4/notification_bg_low_normal.9.png",
+    "alias": "res/drawable-hdpi/notification_bg_low_normal.9.png"
+  },
+  {
+    "name": "res/drawable-hdpi-v4/notification_bg_low_pressed.9.png",
+    "alias": "res/drawable-hdpi/notification_bg_low_pressed.9.png"
+  },
+  {
+    "name": "res/drawable-hdpi-v4/notification_bg_normal.9.png",
+    "alias": "res/drawable-hdpi/notification_bg_normal.9.png"
+  },
+  {
+    "name": "res/drawable-hdpi-v4/notification_bg_normal_pressed.9.png",
+    "alias": "res/drawable-hdpi/notification_bg_normal_pressed.9.png"
+  },
+  {
+    "name": "res/drawable-hdpi-v4/notify_panel_notification_icon_bg.png",
+    "alias": "res/drawable-hdpi/notify_panel_notification_icon_bg.png"
+  },
+  {
+    "name": "res/drawable-mdpi-v4/notification_bg_low_normal.9.png",
+    "alias": "res/drawable-mdpi/notification_bg_low_normal.9.png"
+  },
+  {
+    "name": "res/drawable-mdpi-v4/notification_bg_low_pressed.9.png",
+    "alias": "res/drawable-mdpi/notification_bg_low_pressed.9.png"
+  },
+  {
+    "name": "res/drawable-mdpi-v4/notification_bg_normal.9.png",
+    "alias": "res/drawable-mdpi/notification_bg_normal.9.png"
+  },
+  {
+    "name": "res/drawable-mdpi-v4/notification_bg_normal_pressed.9.png",
+    "alias": "res/drawable-mdpi/notification_bg_normal_pressed.9.png"
+  },
+  {
+    "name": "res/drawable-mdpi-v4/notify_panel_notification_icon_bg.png",
+    "alias": "res/drawable-mdpi/notify_panel_notification_icon_bg.png"
+  },
+  {
+    "name": "res/drawable-xhdpi-v4/notification_bg_low_normal.9.png",
+    "alias": "res/drawable-xhdpi/notification_bg_low_normal.9.png"
+  },
+  {
+    "name": "res/drawable-xhdpi-v4/notification_bg_low_pressed.9.png",
+    "alias": "res/drawable-xhdpi/notification_bg_low_pressed.9.png"
+  },
+  {
+    "name": "res/drawable-xhdpi-v4/notification_bg_normal.9.png",
+    "alias": "res/drawable-xhdpi/notification_bg_normal.9.png"
+  },
+  {
+    "name": "res/drawable-xhdpi-v4/notification_bg_normal_pressed.9.png",
+    "alias": "res/drawable-xhdpi/notification_bg_normal_pressed.9.png"
+  },
+  {
+    "name": "res/drawable-xhdpi-v4/notify_panel_notification_icon_bg.png",
+    "alias": "res/drawable-xhdpi/notify_panel_notification_icon_bg.png"
+  },
+  {
+    "name": "res/mipmap-hdpi-v4/ic_launcher.png",
+    "alias": "res/mipmap-hdpi/ic_launcher.png"
+  },
+  {
+    "name": "res/mipmap-mdpi-v4/ic_launcher.png",
+    "alias": "res/mipmap-mdpi/ic_launcher.png"
+  },
+  {
+    "name": "res/mipmap-xhdpi-v4/ic_launcher.png",
+    "alias": "res/mipmap-xhdpi/ic_launcher.png"
+  },
+  {
+    "name": "res/mipmap-xxhdpi-v4/ic_launcher.png",
+    "alias": "res/mipmap-xxhdpi/ic_launcher.png"
+  },
+  {
+    "name": "res/mipmap-xxxhdpi-v4/ic_launcher.png",
+    "alias": "res/mipmap-xxxhdpi/ic_launcher.png"
+  }
+]

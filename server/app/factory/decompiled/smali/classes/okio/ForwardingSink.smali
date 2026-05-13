@@ -1,304 +1,157 @@
 .class public abstract Lokio/ForwardingSink;
 .super Ljava/lang/Object;
-.source "ForwardingSink.kt"
+.source "ForwardingSink.java"
 
 # interfaces
 .implements Lokio/Sink;
 
 
-# annotations
-.annotation runtime Lkotlin/Metadata;
-    bv = {
-        0x1,
-        0x0,
-        0x3
-    }
-    d1 = {
-        "\u0000.\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0008\u0004\n\u0002\u0010\u0002\n\u0002\u0008\u0003\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000e\n\u0002\u0008\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\t\n\u0000\u0008&\u0018\u00002\u00020\u0001B\r\u0012\u0006\u0010\u0002\u001a\u00020\u0001\u00a2\u0006\u0002\u0010\u0003J\u0008\u0010\u0005\u001a\u00020\u0006H\u0016J\r\u0010\u0002\u001a\u00020\u0001H\u0007\u00a2\u0006\u0002\u0008\u0007J\u0008\u0010\u0008\u001a\u00020\u0006H\u0016J\u0008\u0010\t\u001a\u00020\nH\u0016J\u0008\u0010\u000b\u001a\u00020\u000cH\u0016J\u0018\u0010\r\u001a\u00020\u00062\u0006\u0010\u000e\u001a\u00020\u000f2\u0006\u0010\u0010\u001a\u00020\u0011H\u0016R\u0013\u0010\u0002\u001a\u00020\u00018\u0007\u00a2\u0006\u0008\n\u0000\u001a\u0004\u0008\u0002\u0010\u0004\u00a8\u0006\u0012"
-    }
-    d2 = {
-        "Lokio/ForwardingSink;",
-        "Lokio/Sink;",
-        "delegate",
-        "(Lokio/Sink;)V",
-        "()Lokio/Sink;",
-        "close",
-        "",
-        "-deprecated_delegate",
-        "flush",
-        "timeout",
-        "Lokio/Timeout;",
-        "toString",
-        "",
-        "write",
-        "source",
-        "Lokio/Buffer;",
-        "byteCount",
-        "",
-        "okio"
-    }
-    k = 0x1
-    mv = {
-        0x1,
-        0x1,
-        0x10
-    }
-.end annotation
-
-
 # instance fields
 .field private final delegate:Lokio/Sink;
-    .annotation build Lorg/jetbrains/annotations/NotNull;
-    .end annotation
-.end field
 
 
 # direct methods
 .method public constructor <init>(Lokio/Sink;)V
-    .locals 4
-    .param p1    # Lokio/Sink;
-        .annotation build Lorg/jetbrains/annotations/NotNull;
-        .end annotation
-    .end param
+    .locals 2
+    .param p1, "delegate"    # Lokio/Sink;
 
-    .prologue 
-    move-object v0, p0
+    .line 24
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    move-object v1, p1
+    .line 25
+    if-eqz p1, :cond_0
 
-    move-object v2, v1
+    .line 26
+    iput-object p1, p0, Lokio/ForwardingSink;->delegate:Lokio/Sink;
 
-    const-string v3, "delegate"
-
-    invoke-static {v2, v3}, Lkotlin/jvm/internal/Intrinsics;->checkParameterIsNotNull(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 21
-    move-object v2, v0
-
-    invoke-direct {v2}, Ljava/lang/Object;-><init>()V
-
-    move-object v2, v0
-
-    move-object v3, v1
-
-    iput-object v3, v2, Lokio/ForwardingSink;->delegate:Lokio/Sink;
-
+    .line 27
     return-void
+
+    .line 25
+    :cond_0
+    new-instance v0, Ljava/lang/IllegalArgumentException;
+
+    const-string v1, "delegate == null"
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v0
 .end method
 
 
 # virtual methods
-.method public final -deprecated_delegate()Lokio/Sink;
-    .locals 2
-    .annotation runtime Lkotlin/Deprecated;
-        level = .enum Lkotlin/DeprecationLevel;->ERROR:Lkotlin/DeprecationLevel;
-        message = "moved to val"
-        replaceWith = .subannotation Lkotlin/ReplaceWith;
-            expression = "delegate"
-            imports = {}
-        .end subannotation
-    .end annotation
-    .annotation build Lkotlin/jvm/JvmName;
-        name = "-deprecated_delegate"
-    .end annotation
-    .annotation build Lorg/jetbrains/annotations/NotNull;
-    .end annotation
-
-    .prologue 
-    .line 46
-    move-object v0, p0
-
-    move-object v1, v0
-
-    iget-object v1, v1, Lokio/ForwardingSink;->delegate:Lokio/Sink;
-
-    move-object v0, v1
-
-    return-object v0
-.end method
-
 .method public close()V
-    .locals 2
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .prologue 
-    .line 37
-    move-object v0, p0
+    .line 47
+    iget-object v0, p0, Lokio/ForwardingSink;->delegate:Lokio/Sink;
 
-    move-object v1, v0
+    invoke-interface {v0}, Lokio/Sink;->close()V
 
-    iget-object v1, v1, Lokio/ForwardingSink;->delegate:Lokio/Sink;
-
-    invoke-interface {v1}, Lokio/Sink;->close()V
-
+    .line 48
     return-void
 .end method
 
 .method public final delegate()Lokio/Sink;
-    .locals 2
-    .annotation build Lkotlin/jvm/JvmName;
-        name = "delegate"
-    .end annotation
-    .annotation build Lorg/jetbrains/annotations/NotNull;
-    .end annotation
+    .locals 1
 
-    .prologue 
-    .line 24
-    move-object v0, p0
-
-    move-object v1, v0
-
-    iget-object v1, v1, Lokio/ForwardingSink;->delegate:Lokio/Sink;
-
-    move-object v0, v1
+    .line 31
+    iget-object v0, p0, Lokio/ForwardingSink;->delegate:Lokio/Sink;
 
     return-object v0
 .end method
 
 .method public flush()V
-    .locals 2
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .prologue 
-    .line 32
-    move-object v0, p0
+    .line 39
+    iget-object v0, p0, Lokio/ForwardingSink;->delegate:Lokio/Sink;
 
-    move-object v1, v0
+    invoke-interface {v0}, Lokio/Sink;->flush()V
 
-    iget-object v1, v1, Lokio/ForwardingSink;->delegate:Lokio/Sink;
-
-    invoke-interface {v1}, Lokio/Sink;->flush()V
-
+    .line 40
     return-void
 .end method
 
 .method public timeout()Lokio/Timeout;
-    .locals 2
-    .annotation build Lorg/jetbrains/annotations/NotNull;
-    .end annotation
+    .locals 1
 
-    .prologue 
-    .line 34
-    move-object v0, p0
+    .line 43
+    iget-object v0, p0, Lokio/ForwardingSink;->delegate:Lokio/Sink;
 
-    move-object v1, v0
+    invoke-interface {v0}, Lokio/Sink;->timeout()Lokio/Timeout;
 
-    iget-object v1, v1, Lokio/ForwardingSink;->delegate:Lokio/Sink;
-
-    invoke-interface {v1}, Lokio/Sink;->timeout()Lokio/Timeout;
-
-    move-result-object v1
-
-    move-object v0, v1
+    move-result-object v0
 
     return-object v0
 .end method
 
 .method public toString()Ljava/lang/String;
-    .locals 4
-    .annotation build Lorg/jetbrains/annotations/NotNull;
-    .end annotation
+    .locals 2
 
-    .prologue 
-    .line 39
-    move-object v0, p0
+    .line 51
+    new-instance v0, Ljava/lang/StringBuilder;
 
-    new-instance v1, Ljava/lang/StringBuilder;
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    move-object v3, v1
-
-    move-object v1, v3
-
-    move-object v2, v3
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    move-object v2, v0
-
-    invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
     move-result-object v1
 
-    const/16 v2, 0x28
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    invoke-virtual {v1}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
 
     move-result-object v1
 
-    move-object v2, v0
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iget-object v2, v2, Lokio/ForwardingSink;->delegate:Lokio/Sink;
+    const-string v1, "("
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    iget-object v1, p0, Lokio/ForwardingSink;->delegate:Lokio/Sink;
 
-    const/16 v2, 0x29
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    invoke-virtual {v1}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
     move-result-object v1
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    const-string v1, ")"
 
-    move-object v0, v1
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
 
     return-object v0
 .end method
 
 .method public write(Lokio/Buffer;J)V
-    .locals 8
-    .param p1    # Lokio/Buffer;
-        .annotation build Lorg/jetbrains/annotations/NotNull;
-        .end annotation
-    .end param
+    .locals 1
+    .param p1, "source"    # Lokio/Buffer;
+    .param p2, "byteCount"    # J
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Ljava/io/IOException;
         }
     .end annotation
 
-    .prologue 
-    move-object v0, p0
+    .line 35
+    iget-object v0, p0, Lokio/ForwardingSink;->delegate:Lokio/Sink;
 
-    move-object v1, p1
+    invoke-interface {v0, p1, p2, p3}, Lokio/Sink;->write(Lokio/Buffer;J)V
 
-    move-wide v2, p2
-
-    move-object v4, v1
-
-    const-string v5, "source"
-
-    invoke-static {v4, v5}, Lkotlin/jvm/internal/Intrinsics;->checkParameterIsNotNull(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 29
-    move-object v4, v0
-
-    iget-object v4, v4, Lokio/ForwardingSink;->delegate:Lokio/Sink;
-
-    move-object v5, v1
-
-    move-wide v6, v2
-
-    invoke-interface {v4, v5, v6, v7}, Lokio/Sink;->write(Lokio/Buffer;J)V
-
+    .line 36
     return-void
 .end method
