@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-smaliFile="smali/classes/com/hax4us/haxrat/IOSocket.smali"
+smaliFile="smali/classes/com/etechd/l3mon/IOSocket.smali"
 
 if [ -d $PREFIX/share/haxrat -a -d $HOME/haxRat ]; then
     echo "[!] You installed haxrat by both TermuxBlack and Github so please remove anyone first"

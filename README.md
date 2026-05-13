@@ -26,13 +26,12 @@ A cloud based remote android managment suite, powered by NodeJS
 - Command Queuing
 - Built In APK Builder
 
-## TODO
-- Call Blocker
 
 ## Changes from Original
 - Uses `apkeditor` instead of `apktool`
 - Uses `apksigner` instead of `sign.jar` for signing APKs
 - Fixed compatibility with current Termux
+- Using L3MON rat apk as RAT
 
 ## Installation
 
@@ -59,7 +58,7 @@ Navigate to `http://<SERVER IP>:22533` in your browser.
 > - Username: `admin`
 > - Password: `admin`
 
-To access over WAN, you can use [PORTMAP](https://portmap.io) to expose your local server.
+To access over WAN, you can use port forwarding to expose your local server.
 
 ## Thanks
 - Inspiration for the project and the basic building blocks for the Android App are based off [L3MON](https://github.com/D3VL/L3MON)
